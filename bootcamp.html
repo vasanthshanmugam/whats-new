@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Testing / Engineering Bootcamp — Vasanth Tech Talk</title>
+<meta name="description" content="21-week Performance Testing / Engineering Bootcamp covering fundamentals, JMeter, LoadRunner, NeoLoad, k6, and more. August to December 2026.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#CC1418;
+  --red-dark:#A8111A;
+  --red-soft:#F9E8E8;
+  --black:#1A1A1A;
+  --gray:#6B7280;
+  --light:#F3F4F6;
+  --white:#FFFFFF;
+  --border:#E5E7EB;
+  --shadow:0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg:0 12px 48px rgba(0,0,0,0.12);
+  --green:#059669;
+  --green-soft:#ECFDF5;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',Roboto,sans-serif;
+  color:var(--black);
+  background:var(--white);
+  line-height:1.6;
+}
+a{color:var(--red);text-decoration:none}
+a:hover{text-decoration:underline}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;
+}
+.nav-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo svg{flex-shrink:0}
+.logo-text{line-height:1.1}
+.logo-name{font-size:14px;font-weight:800;color:var(--red);letter-spacing:-.2px}
+.logo-tag{font-size:9px;color:var(--gray);letter-spacing:.6px;text-transform:uppercase;margin-top:1px}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:14px;font-weight:500;color:var(--gray);transition:color .2s}
+.nav-links a:hover{color:var(--red);text-decoration:none}
+.nav-cta{
+  background:var(--green);color:var(--white) !important;
+  padding:8px 20px;border-radius:8px;font-weight:600;
+  transition:background .2s;
+}
+.nav-cta:hover{background:#047857 !important;text-decoration:none !important}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--black);margin:5px 0;transition:all .3s}
+
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--white) 0%,var(--green-soft) 50%,var(--white) 100%);
+  padding:100px 24px 60px;
+  text-align:center;
+}
+.hero-content{max-width:780px}
+.hero-badge{
+  display:inline-block;
+  background:var(--green-soft);color:var(--green);
+  padding:6px 16px;border-radius:20px;
+  font-size:13px;font-weight:600;letter-spacing:.3px;
+  margin-bottom:24px;
+}
+.hero h1{
+  font-size:clamp(32px,5vw,48px);
+  font-weight:800;
+  line-height:1.15;
+  color:var(--black);
+  margin-bottom:20px;
+}
+.hero h1 span{color:var(--green)}
+.hero p{
+  font-size:18px;color:var(--gray);
+  max-width:600px;margin:0 auto 36px;
+  line-height:1.7;
+}
+.hero-meta{
+  display:flex;gap:32px;justify-content:center;flex-wrap:wrap;
+  margin-bottom:40px;
+}
+.hero-meta-item{
+  display:flex;align-items:center;gap:8px;
+  font-size:15px;font-weight:500;color:var(--black);
+}
+.hero-meta-item svg{color:var(--green);flex-shrink:0}
+.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 32px;border-radius:10px;
+  font-size:16px;font-weight:600;
+  cursor:pointer;border:none;
+  transition:all .2s;
+}
+.btn-primary{
+  background:var(--green);color:var(--white);
+  box-shadow:0 4px 16px rgba(5,150,105,0.3);
+}
+.btn-primary:hover{background:#047857;transform:translateY(-1px);text-decoration:none;color:var(--white)}
+.btn-outline{
+  background:transparent;color:var(--green);
+  border:2px solid var(--green);
+}
+.btn-outline:hover{background:var(--green-soft);text-decoration:none}
+
+section{padding:80px 24px}
+section:nth-child(even){background:var(--light)}
+.container{max-width:1100px;margin:0 auto}
+.section-label{
+  display:inline-block;
+  font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--green);margin-bottom:12px;
+}
+.section-title{
+  font-size:clamp(26px,3.5vw,36px);
+  font-weight:800;color:var(--black);
+  margin-bottom:16px;line-height:1.25;
+}
+.section-subtitle{
+  font-size:16px;color:var(--gray);
+  max-width:600px;margin-bottom:48px;
+  line-height:1.7;
+}
+.section-subtitle.center{margin-left:auto;margin-right:auto;text-align:center}
+
+.month-block{margin-bottom:40px}
+.month-header{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;
+}
+.month-badge{
+  background:var(--green);color:var(--white);
+  padding:6px 16px;border-radius:8px;
+  font-size:13px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.5px;
+}
+.month-theme{font-size:18px;font-weight:700;color:var(--black)}
+.schedule-grid{display:flex;flex-direction:column;gap:12px}
+.session-card{
+  background:var(--white);
+  border-radius:12px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+  transition:box-shadow .3s;
+  display:flex;
+  overflow:hidden;
+}
+.session-card:hover{box-shadow:var(--shadow-lg)}
+.session-num{
+  background:var(--green);color:var(--white);
+  padding:16px 20px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  min-width:70px;
+  flex-shrink:0;
+}
+.session-num .wk-label{font-size:10px;font-weight:600;opacity:.8;text-transform:uppercase;letter-spacing:.5px}
+.session-num .wk-number{font-size:24px;font-weight:800;line-height:1}
+.session-info{padding:16px 24px;flex:1}
+.session-date{font-size:13px;font-weight:700;color:var(--black);margin-bottom:2px}
+.session-module{font-size:15px;font-weight:700;color:var(--black);margin-bottom:4px}
+.session-desc{font-size:12px;color:var(--gray);line-height:1.5}
+.session-time{
+  display:inline-flex;align-items:center;gap:5px;
+  margin-top:8px;
+  font-size:11px;color:var(--green);font-weight:600;
+}
+
+.curriculum-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:20px;
+}
+.module-card{
+  background:var(--white);
+  border-radius:12px;
+  padding:28px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+  transition:all .3s;
+  position:relative;
+  overflow:hidden;
+}
+.module-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.module-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--green);
+}
+.module-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:8px;
+  background:var(--green-soft);color:var(--green);
+  font-size:13px;font-weight:800;
+  margin-bottom:14px;
+}
+.module-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--black)}
+.module-card p{font-size:13px;color:var(--gray);line-height:1.6}
+.module-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.module-tag{
+  font-size:11px;padding:3px 8px;
+  background:var(--light);color:var(--gray);
+  border-radius:4px;font-weight:500;
+}
+
+.pricing-card{
+  max-width:480px;margin:0 auto;
+  background:var(--white);
+  border-radius:20px;
+  box-shadow:var(--shadow-lg);
+  border:2px solid var(--green);
+  overflow:hidden;
+  text-align:center;
+}
+.pricing-header{
+  background:linear-gradient(135deg,var(--green) 0%,#047857 100%);
+  color:var(--white);
+  padding:36px 32px 28px;
+}
+.pricing-header h3{font-size:22px;font-weight:800;margin-bottom:8px}
+.pricing-header p{font-size:14px;opacity:.85}
+.pricing-amount{padding:32px}
+.price{font-size:48px;font-weight:800;color:var(--black)}
+.price-currency{font-size:24px;vertical-align:top;color:var(--gray)}
+.price-note{font-size:14px;color:var(--gray);margin-top:4px}
+.pricing-features{padding:0 32px 32px;text-align:left}
+.pricing-features li{
+  list-style:none;
+  padding:8px 0;
+  font-size:14px;color:var(--black);
+  display:flex;align-items:center;gap:10px;
+  border-bottom:1px solid var(--border);
+}
+.pricing-features li:last-child{border:none}
+.pricing-features .check{color:var(--green);font-weight:700;font-size:16px}
+.pricing-footer{padding:0 32px 32px}
+
+.instructor-card{
+  display:flex;align-items:center;gap:40px;
+  background:var(--white);
+  border-radius:16px;
+  padding:40px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+}
+.instructor-avatar{
+  width:120px;height:120px;border-radius:50%;
+  background:var(--green);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.instructor-avatar span{font-size:42px;font-weight:800;color:var(--white)}
+.instructor-info h3{font-size:22px;font-weight:700;margin-bottom:4px}
+.instructor-info .role{font-size:14px;color:var(--green);font-weight:600;margin-bottom:12px}
+.instructor-info p{font-size:14px;color:var(--gray);line-height:1.7}
+
+.register-box{max-width:600px;margin:0 auto;text-align:center}
+.register-box p{font-size:16px;color:var(--gray);margin-bottom:32px;line-height:1.7}
+.register-placeholder{
+  background:var(--light);
+  border:2px dashed var(--border);
+  border-radius:12px;
+  padding:48px 32px;
+  color:var(--gray);
+  font-size:14px;
+}
+
+footer{
+  background:var(--black);color:rgba(255,255,255,.6);
+  padding:40px 24px;text-align:center;
+  font-size:13px;
+}
+footer .footer-brand{font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px}
+footer a{color:var(--red)}
+footer .footer-links{display:flex;gap:24px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+footer .footer-links a{color:rgba(255,255,255,.6);font-size:13px}
+footer .footer-links a:hover{color:var(--white)}
+
+@media(max-width:768px){
+  .nav-links{
+    display:none;
+    position:absolute;top:64px;left:0;right:0;
+    background:var(--white);
+    flex-direction:column;gap:0;
+    border-bottom:1px solid var(--border);
+    box-shadow:var(--shadow);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:14px 24px;border-bottom:1px solid var(--border);width:100%}
+  .nav-cta{margin:12px 24px;text-align:center;width:calc(100% - 48px) !important}
+  .hamburger{display:block}
+  .hero{padding:100px 20px 50px}
+  .hero-meta{gap:16px}
+  .session-card{flex-direction:column}
+  .session-num{flex-direction:row;gap:6px;min-width:auto;padding:10px 16px}
+  .session-info{padding:12px 16px}
+  .instructor-card{flex-direction:column;text-align:center;gap:24px}
+  .curriculum-grid{grid-template-columns:1fr}
+  section{padding:60px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="36" height="36" rx="8" fill="#CC1418"/>
+        <path d="M8 10h5l5 12L23 10h5L20 28h-4L8 10z" fill="white"/>
+        <path d="M14 18h8v2.5h-8z" fill="white" opacity=".7"/>
+      </svg>
+      <div class="logo-text">
+        <div class="logo-name">Vasanth Tech Talk</div>
+        <div class="logo-tag">Where Technology Meets Career Growth</div>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">All Courses</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#curriculum">Curriculum</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#register" class="nav-cta">Register Now</a>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Starting August 2026</div>
+    <h1>Performance Testing / <span>Engineering Bootcamp</span></h1>
+    <p>A comprehensive 21-week program to master performance testing from fundamentals to advanced topics. Hands-on with JMeter, LoadRunner, NeoLoad &amp; k6, plus APM tools, CI/CD, and cloud engineering.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Aug 1 &ndash; Dec 19, 2026
+      </div>
+      <div class="hero-meta-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Sat: 5:30 &ndash; 7:30 AM (UK) / 10:00 AM &ndash; 12:00 PM (IST)
+      </div>
+      <div class="hero-meta-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Sun: 6:00 &ndash; 7:00 AM (UK) / 10:30 &ndash; 11:30 AM (IST)
+      </div>
+      <div class="hero-meta-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        21 Weeks &bull; Sat (2 hrs) + Sun (1 hr) &bull; 63 Hours
+      </div>
+    </div>
+    <div style="font-size:14px;color:var(--gray);margin-bottom:40px">
+      Saturday Training + Sunday Practice &amp; Revision
+    </div>
+    <div class="hero-buttons">
+      <a href="#register" class="btn btn-primary">Register Now</a>
+      <a href="#curriculum" class="btn btn-outline">View Curriculum</a>
+    </div>
+  </div>
+</section>
+
+<section id="schedule">
+  <div class="container">
+    <div class="section-label">Schedule</div>
+    <div class="section-title">21 Weeks. 5 Phases. Complete Mastery.</div>
+    <div class="section-subtitle">Saturday 5:30 &ndash; 7:30 AM UK / 10:00 AM &ndash; 12:00 PM IST. Sunday 6:00 &ndash; 7:00 AM UK / 10:30 &ndash; 11:30 AM IST. Structured to take you from foundations to mastery.</div>
+
+    <!-- Month 1: August -->
+    <div class="month-block">
+      <div class="month-header">
+        <span class="month-badge">August</span>
+        <span class="month-theme">Phase 1 &mdash; Foundations &amp; Tools Introduction</span>
+      </div>
+      <div class="schedule-grid">
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">1</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, August 1, 2026</div>
+            <div class="session-module">Performance Testing Fundamentals &amp; Types</div>
+            <div class="session-desc">What is performance testing, where it fits in the SDLC. Deep dive into load, stress, spike, endurance, scalability, and volume testing.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">2</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, August 8, 2026</div>
+            <div class="session-module">Performance Testing Life Cycle &amp; Key Metrics</div>
+            <div class="session-desc">End-to-end process: planning, scripting, execution, analysis, reporting. Key KPIs: response time, throughput, error rate, percentiles (P90/P95/P99), TPS.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">3</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, August 15, 2026</div>
+            <div class="session-module">NFR Gathering &amp; Workload Modelling</div>
+            <div class="session-desc">Defining non-functional requirements, SLA/SLO/SLI, building realistic workload models, and Think Time calculations.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">4</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, August 22, 2026</div>
+            <div class="session-module">JMeter &mdash; Fundamentals &amp; First Test</div>
+            <div class="session-desc">Installation, thread groups, HTTP samplers, timers, assertions, listeners. Build and run your first load test from scratch.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">5</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, August 29, 2026</div>
+            <div class="session-module">JMeter &mdash; Correlation &amp; Parameterization</div>
+            <div class="session-desc">Dynamic values, regular expressions, JSON/CSS extractors, CSV data sets, user-defined variables.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Month 2: September -->
+    <div class="month-block">
+      <div class="month-header">
+        <span class="month-badge">September</span>
+        <span class="month-theme">Phase 2 &mdash; Tools Deep Dive</span>
+      </div>
+      <div class="schedule-grid">
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">6</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, September 5, 2026</div>
+            <div class="session-module">JMeter &mdash; Advanced Scripting &amp; Plugins</div>
+            <div class="session-desc">JSR223 &amp; Groovy scripting, pre/post processors, custom plugins, distributed testing, and CLI mode execution.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">7</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, September 12, 2026</div>
+            <div class="session-module">LoadRunner &mdash; Architecture &amp; VuGen Scripting</div>
+            <div class="session-desc">LoadRunner components, VuGen recording &amp; script enhancement, Controller setup, Analysis tool, and licensing models.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">8</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, September 19, 2026</div>
+            <div class="session-module">NeoLoad &mdash; Design, Recording &amp; Analysis</div>
+            <div class="session-desc">NeoLoad architecture, recording user paths, designing scenarios, monitoring, SLA validation, and reporting.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">9</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, September 26, 2026</div>
+            <div class="session-module">k6 &mdash; Modern Load Testing with JavaScript</div>
+            <div class="session-desc">Writing tests in JavaScript, CLI &amp; cloud execution, thresholds, checks, custom metrics, and CI/CD-friendly workflows.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Month 3: October -->
+    <div class="month-block">
+      <div class="month-header">
+        <span class="month-badge">October</span>
+        <span class="month-theme">Phase 3 &mdash; Analysis &amp; Engineering</span>
+      </div>
+      <div class="schedule-grid">
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">10</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, October 3, 2026</div>
+            <div class="session-module">Tool Comparison &amp; Choosing the Right Tool</div>
+            <div class="session-desc">JMeter vs LoadRunner vs NeoLoad vs k6: licensing, scalability, protocol support, scripting effort, and interview scenarios.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">11</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, October 10, 2026</div>
+            <div class="session-module">Result Analysis &amp; Reporting</div>
+            <div class="session-desc">Reading reports across tools, HTML dashboards, identifying patterns, and writing executive summaries.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">12</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, October 17, 2026</div>
+            <div class="session-module">APM Tools &mdash; Dynatrace, AppDynamics, New Relic</div>
+            <div class="session-desc">How APM tools complement performance testing. Tracing, dashboards, alerting, and correlating APM data with test results.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">13</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, October 24, 2026</div>
+            <div class="session-module">Bottleneck Identification &amp; Root Cause Analysis</div>
+            <div class="session-desc">CPU, memory, disk, network analysis. Thread dumps, heap dumps, GC tuning, and database slow queries.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">14</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, October 31, 2026</div>
+            <div class="session-module">Capacity Planning &amp; Cloud Performance</div>
+            <div class="session-desc">Forecasting resource needs, horizontal vs vertical scaling, AWS/Azure/GCP testing, auto-scaling, and distributed testing.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Month 4: November -->
+    <div class="month-block">
+      <div class="month-header">
+        <span class="month-badge">November</span>
+        <span class="month-theme">Phase 4 &mdash; Advanced Topics</span>
+      </div>
+      <div class="schedule-grid">
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">15</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, November 7, 2026</div>
+            <div class="session-module">CI/CD Integration for Performance Tests</div>
+            <div class="session-desc">Jenkins, GitHub Actions, Azure DevOps pipelines. Shift-left performance testing and automated quality gates.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">16</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, November 14, 2026</div>
+            <div class="session-module">Microservices &amp; API Performance Testing</div>
+            <div class="session-desc">REST, GraphQL, gRPC testing. Service mesh, contract testing, chaos engineering basics.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">17</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, November 21, 2026</div>
+            <div class="session-module">Database &amp; Frontend Performance</div>
+            <div class="session-desc">SQL query optimization, connection pooling, indexing. Lighthouse, Web Vitals, and real user monitoring (RUM).</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">18</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, November 28, 2026</div>
+            <div class="session-module">Real-World Scenarios &amp; Case Studies</div>
+            <div class="session-desc">E-commerce, banking, healthcare case studies. Handling production incidents, Black Friday/sale-day readiness, and performance budgets.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Month 5: December -->
+    <div class="month-block">
+      <div class="month-header">
+        <span class="month-badge">December</span>
+        <span class="month-theme">Phase 5 &mdash; Interview Prep &amp; Wrap-up</span>
+      </div>
+      <div class="schedule-grid">
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">19</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, December 5, 2026</div>
+            <div class="session-module">Resume Building &amp; Portfolio</div>
+            <div class="session-desc">Crafting your performance testing resume, showcasing projects, LinkedIn optimization, and building a GitHub portfolio.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">20</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, December 12, 2026</div>
+            <div class="session-module">Mock Interviews &mdash; Technical &amp; Behavioral</div>
+            <div class="session-desc">Full-length mock interviews with detailed feedback. Common questions and winning answers across all tools.</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">21</span></div>
+          <div class="session-info">
+            <div class="session-date">Saturday, December 19, 2026</div>
+            <div class="session-module">Final Assessment &amp; Career Guidance</div>
+            <div class="session-desc">Comprehensive assessment, certificate ceremony, career roadmap, and next steps.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="curriculum">
+  <div class="container">
+    <div class="section-label">Curriculum</div>
+    <div class="section-title">5 Phases of Mastery</div>
+    <div class="section-subtitle">From absolute fundamentals to interview-ready confidence. Each phase builds on the previous one.</div>
+
+    <div class="curriculum-grid">
+
+      <div class="module-card">
+        <div class="module-num">01</div>
+        <h3>Foundations (Weeks 1&ndash;3)</h3>
+        <p>Performance testing fundamentals &amp; types, life cycle, key metrics &amp; KPIs, NFR gathering, SLA/SLO/SLI, and workload modelling.</p>
+        <div class="module-tags"><span class="module-tag">Fundamentals</span><span class="module-tag">Metrics</span><span class="module-tag">Planning</span></div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">02</div>
+        <h3>Tools Deep Dive (Weeks 4&ndash;10)</h3>
+        <p>Hands-on with four industry-leading tools. JMeter fundamentals to advanced scripting, LoadRunner VuGen &amp; Controller, NeoLoad design &amp; analysis, k6 JavaScript-based testing, and tool comparison.</p>
+        <div class="module-tags"><span class="module-tag">JMeter</span><span class="module-tag">LoadRunner</span><span class="module-tag">NeoLoad</span><span class="module-tag">k6</span></div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">03</div>
+        <h3>Analysis &amp; Engineering (Weeks 11&ndash;14)</h3>
+        <p>Result analysis &amp; reporting, APM tools (Dynatrace, AppDynamics, New Relic), bottleneck identification, root cause analysis, capacity planning, and cloud performance.</p>
+        <div class="module-tags"><span class="module-tag">APM</span><span class="module-tag">Analysis</span><span class="module-tag">Cloud</span></div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">04</div>
+        <h3>Advanced Topics (Weeks 15&ndash;18)</h3>
+        <p>CI/CD integration, microservices &amp; API testing, database &amp; frontend performance, real-world case studies, and production incident handling.</p>
+        <div class="module-tags"><span class="module-tag">CI/CD</span><span class="module-tag">APIs</span><span class="module-tag">Database</span><span class="module-tag">Case Studies</span></div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">05</div>
+        <h3>Interview Prep (Weeks 19&ndash;21)</h3>
+        <p>Resume building, portfolio creation, full mock interviews covering all tools, final assessment, and career guidance.</p>
+        <div class="module-tags"><span class="module-tag">Resume</span><span class="module-tag">Mock Interviews</span><span class="module-tag">Career</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container" style="text-align:center">
+    <div class="section-label">Pricing</div>
+    <div class="section-title" style="text-align:center">Invest in Your Career</div>
+    <div class="section-subtitle center">One-time fee. 21 weeks of structured Saturday training &amp; Sunday practice sessions.</div>
+
+    <div class="pricing-card">
+      <div class="pricing-header">
+        <h3>Complete Bootcamp</h3>
+        <p>21 Weeks &bull; 5 Phases &bull; 63 Hours</p>
+      </div>
+      <div class="pricing-amount">
+        <div class="price"><span class="price-currency">&#8377;</span>10,000</div>
+        <div class="price-note">One-time payment &bull; All inclusive</div>
+      </div>
+      <ul class="pricing-features">
+        <li><span class="check">&#10003;</span> 21 Saturday training sessions (5:30&ndash;7:30 AM UK / 10:00 AM&ndash;12:00 PM IST)</li>
+        <li><span class="check">&#10003;</span> 21 Sunday practice sessions (6:00&ndash;7:00 AM UK / 10:30&ndash;11:30 AM IST)</li>
+        <li><span class="check">&#10003;</span> Structured 5-phase curriculum</li>
+        <li><span class="check">&#10003;</span> Hands-on with JMeter, LoadRunner, NeoLoad &amp; k6</li>
+        <li><span class="check">&#10003;</span> Mock interview practice</li>
+        <li><span class="check">&#10003;</span> Resume &amp; career guidance</li>
+        <li><span class="check">&#10003;</span> Session recordings for revision</li>
+        <li><span class="check">&#10003;</span> Certificate of completion</li>
+        <li><span class="check">&#10003;</span> Lifetime access to course materials</li>
+      </ul>
+      <div class="pricing-footer">
+        <a href="#register" class="btn btn-primary" style="width:100%;justify-content:center">Register Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="instructor">
+  <div class="container">
+    <div class="section-label">Your Instructor</div>
+    <div class="section-title">Learn from an Expert</div>
+    <div class="section-subtitle">Industry practitioner with real-world performance engineering experience.</div>
+
+    <div class="instructor-card">
+      <div class="instructor-avatar"><span>VS</span></div>
+      <div class="instructor-info">
+        <h3>Vasanth Shanmugam</h3>
+        <div class="role">Founder, Vasanth Tech Talk</div>
+        <p>Performance engineering specialist with extensive experience across enterprise systems. Has mentored professionals from freshers to senior engineers in cracking performance testing interviews at top companies worldwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="register">
+  <div class="container">
+    <div class="register-box">
+      <div class="section-label">Registration</div>
+      <div class="section-title" style="text-align:center">Secure Your Spot</div>
+      <p>Seats are limited to ensure personalized attention and effective mock interview practice. Register now for the August 2026 batch.</p>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScOl4DKBEnGYTf-nFF1YkBctWWItKQx77mXM82nDflVUE1Swg/viewform?embedded=true" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0" style="border-radius:12px">Loading&hellip;</iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Vasanth Tech Talk</div>
+  <p>Where Technology Meets Career Growth</p>
+  <div class="footer-links">
+    <a href="index.html">All Courses</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#curriculum">Curriculum</a>
+    <a href="#pricing">Pricing</a>
+  </div>
+  <p style="margin-top:24px">&copy; 2026 Vasanth Tech Talk. All rights reserved.</p>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>

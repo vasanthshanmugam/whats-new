@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agentic AI with JMeter — Training Course | Vasanth Tech Talk</title>
-<meta name="description" content="Master AI-powered performance testing with Apache JMeter and Claude AI. 10-Saturday hands-on training by Vasanth Tech Talk.">
+<title>Vasanth Tech Talk — Training Courses</title>
+<meta name="description" content="Hands-on training courses in Performance Testing, Agentic AI, and Interview Preparation by Vasanth Tech Talk.">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -18,6 +18,10 @@
   --border:#E5E7EB;
   --shadow:0 4px 24px rgba(0,0,0,0.08);
   --shadow-lg:0 12px 48px rgba(0,0,0,0.12);
+  --blue:#2563EB;
+  --blue-soft:#EFF6FF;
+  --green:#059669;
+  --green-soft:#ECFDF5;
 }
 html{scroll-behavior:smooth}
 body{
@@ -29,7 +33,6 @@ body{
 a{color:var(--red);text-decoration:none}
 a:hover{text-decoration:underline}
 
-/* ─── Navigation ─────────────────────────────────────────────── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   background:rgba(255,255,255,0.95);
@@ -50,206 +53,160 @@ nav{
 .nav-links{display:flex;gap:28px;align-items:center}
 .nav-links a{font-size:14px;font-weight:500;color:var(--gray);transition:color .2s}
 .nav-links a:hover{color:var(--red);text-decoration:none}
-.nav-cta{
-  background:var(--red);color:var(--white) !important;
-  padding:8px 20px;border-radius:8px;font-weight:600;
-  transition:background .2s;
-}
-.nav-cta:hover{background:var(--red-dark) !important;text-decoration:none !important}
-
 .hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
 .hamburger span{display:block;width:22px;height:2px;background:var(--black);margin:5px 0;transition:all .3s}
 
 /* ─── Hero ───────────────────────────────────────────────────── */
 .hero{
-  min-height:100vh;
+  min-height:70vh;
   display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,var(--white) 0%,var(--red-soft) 50%,var(--white) 100%);
-  padding:100px 24px 60px;
+  background:linear-gradient(135deg,var(--white) 0%,var(--red-soft) 40%,var(--blue-soft) 70%,var(--green-soft) 100%);
+  padding:120px 24px 80px;
   text-align:center;
 }
 .hero-content{max-width:780px}
-.hero-badge{
-  display:inline-block;
-  background:var(--red-soft);color:var(--red);
-  padding:6px 16px;border-radius:20px;
-  font-size:13px;font-weight:600;letter-spacing:.3px;
-  margin-bottom:24px;
-}
 .hero h1{
   font-size:clamp(32px,5vw,52px);
   font-weight:800;
   line-height:1.15;
   color:var(--black);
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
 .hero h1 span{color:var(--red)}
 .hero p{
   font-size:18px;color:var(--gray);
-  max-width:600px;margin:0 auto 36px;
+  max-width:600px;margin:0 auto 12px;
   line-height:1.7;
 }
-.hero-meta{
-  display:flex;gap:32px;justify-content:center;flex-wrap:wrap;
-  margin-bottom:40px;
+.hero .tagline{
+  font-size:14px;color:var(--gray);
+  margin-bottom:0;
 }
-.hero-meta-item{
-  display:flex;align-items:center;gap:8px;
-  font-size:15px;font-weight:500;color:var(--black);
-}
-.hero-meta-item svg{color:var(--red);flex-shrink:0}
-.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:14px 32px;border-radius:10px;
-  font-size:16px;font-weight:600;
-  cursor:pointer;border:none;
-  transition:all .2s;
-}
-.btn-primary{
-  background:var(--red);color:var(--white);
-  box-shadow:0 4px 16px rgba(204,20,24,0.3);
-}
-.btn-primary:hover{background:var(--red-dark);transform:translateY(-1px);text-decoration:none;color:var(--white)}
-.btn-outline{
-  background:transparent;color:var(--red);
-  border:2px solid var(--red);
-}
-.btn-outline:hover{background:var(--red-soft);text-decoration:none}
 
-/* ─── Sections ───────────────────────────────────────────────── */
-section{padding:80px 24px}
-section:nth-child(even){background:var(--light)}
-.container{max-width:1100px;margin:0 auto}
-.section-label{
+/* ─── Course Cards ───────────────────────────────────────────── */
+.courses-section{
+  padding:80px 24px;
+  background:var(--light);
+}
+.courses-container{max-width:1100px;margin:0 auto}
+.courses-header{text-align:center;margin-bottom:48px}
+.courses-header .label{
   display:inline-block;
   font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
   color:var(--red);margin-bottom:12px;
 }
-.section-title{
+.courses-header h2{
   font-size:clamp(26px,3.5vw,36px);
   font-weight:800;color:var(--black);
-  margin-bottom:16px;line-height:1.25;
+  margin-bottom:12px;
 }
-.section-subtitle{
+.courses-header p{
   font-size:16px;color:var(--gray);
-  max-width:600px;margin-bottom:48px;
-  line-height:1.7;
-}
-.section-subtitle.center{margin-left:auto;margin-right:auto;text-align:center}
-
-/* ─── Schedule ───────────────────────────────────────────────── */
-.schedule-grid{display:flex;flex-direction:column;gap:16px}
-.session-card{
-  background:var(--white);
-  border-radius:14px;
-  box-shadow:var(--shadow);
-  border:1px solid var(--border);
-  transition:box-shadow .3s;
-  display:flex;
-  overflow:hidden;
-}
-.session-card:hover{box-shadow:var(--shadow-lg)}
-.session-num{
-  background:var(--red);color:var(--white);
-  padding:20px 24px;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  min-width:80px;
-  flex-shrink:0;
-}
-.session-num .wk-label{font-size:11px;font-weight:600;opacity:.8;text-transform:uppercase;letter-spacing:.5px}
-.session-num .wk-number{font-size:28px;font-weight:800;line-height:1}
-.session-info{
-  padding:20px 28px;
-  flex:1;
-}
-.session-date{font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px}
-.session-module{font-size:17px;font-weight:700;color:var(--black);margin-bottom:6px}
-.session-desc{font-size:13px;color:var(--gray);line-height:1.5}
-.session-time{
-  display:inline-flex;align-items:center;gap:5px;
-  margin-top:10px;
-  font-size:12px;color:var(--red);font-weight:600;
+  max-width:550px;margin:0 auto;
 }
 
-/* ─── Curriculum ─────────────────────────────────────────────── */
-.curriculum-grid{
+.courses-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:28px;
 }
-.module-card{
+
+.course-card{
   background:var(--white);
-  border-radius:12px;
-  padding:28px;
+  border-radius:16px;
+  overflow:hidden;
   box-shadow:var(--shadow);
   border:1px solid var(--border);
   transition:all .3s;
-  position:relative;
-  overflow:hidden;
+  display:flex;
+  flex-direction:column;
 }
-.module-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
-.module-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:var(--red);
-}
-.module-num{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:32px;height:32px;border-radius:8px;
-  background:var(--red-soft);color:var(--red);
-  font-size:13px;font-weight:800;
-  margin-bottom:14px;
-}
-.module-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--black)}
-.module-card p{font-size:13px;color:var(--gray);line-height:1.6}
-.module-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
-.module-tag{
-  font-size:11px;padding:3px 8px;
-  background:var(--light);color:var(--gray);
-  border-radius:4px;font-weight:500;
+.course-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
 }
 
-/* ─── Pricing ────────────────────────────────────────────────── */
-.pricing-card{
-  max-width:480px;margin:0 auto;
-  background:var(--white);
-  border-radius:20px;
-  box-shadow:var(--shadow-lg);
-  border:2px solid var(--red);
-  overflow:hidden;
-  text-align:center;
-}
-.pricing-header{
-  background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%);
+.card-banner{
+  padding:28px 28px 20px;
   color:var(--white);
-  padding:36px 32px 28px;
+  position:relative;
 }
-.pricing-header h3{font-size:22px;font-weight:800;margin-bottom:8px}
-.pricing-header p{font-size:14px;opacity:.85}
-.pricing-amount{
-  padding:32px;
+.card-banner.red{background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%)}
+.card-banner.blue{background:linear-gradient(135deg,var(--blue) 0%,#1D4ED8 100%)}
+.card-banner.green{background:linear-gradient(135deg,var(--green) 0%,#047857 100%)}
+
+.card-badge{
+  display:inline-block;
+  background:rgba(255,255,255,.2);
+  padding:4px 12px;border-radius:12px;
+  font-size:11px;font-weight:600;letter-spacing:.3px;
+  margin-bottom:12px;
 }
-.price{font-size:48px;font-weight:800;color:var(--black)}
-.price-currency{font-size:24px;vertical-align:top;color:var(--gray)}
-.price-note{font-size:14px;color:var(--gray);margin-top:4px}
-.pricing-features{
-  padding:0 32px 32px;
-  text-align:left;
+.card-banner h3{
+  font-size:22px;font-weight:800;
+  line-height:1.25;
+  margin-bottom:6px;
 }
-.pricing-features li{
+.card-banner p{
+  font-size:13px;opacity:.85;
+  line-height:1.5;
+}
+
+.card-body{
+  padding:24px 28px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+.card-details{
   list-style:none;
+  margin-bottom:24px;
+  flex:1;
+}
+.card-details li{
   padding:8px 0;
   font-size:14px;color:var(--black);
   display:flex;align-items:center;gap:10px;
   border-bottom:1px solid var(--border);
 }
-.pricing-features li:last-child{border:none}
-.pricing-features .check{color:var(--red);font-weight:700;font-size:16px}
-.pricing-footer{padding:0 32px 32px}
+.card-details li:last-child{border:none}
+.card-details .icon{
+  flex-shrink:0;
+  width:20px;text-align:center;
+  color:var(--gray);
+  font-size:14px;
+}
+.card-details .highlight{font-weight:700}
 
-/* ─── Instructor ─────────────────────────────────────────────── */
-.instructor-card{
+.card-price{
+  display:flex;align-items:baseline;gap:6px;
+  margin-bottom:20px;
+}
+.card-price .amount{font-size:28px;font-weight:800;color:var(--black)}
+.card-price .currency{font-size:16px;color:var(--gray)}
+.card-price .note{font-size:12px;color:var(--gray);margin-left:auto}
+
+.card-cta{
+  display:block;
+  text-align:center;
+  padding:14px;
+  border-radius:10px;
+  font-size:15px;font-weight:700;
+  color:var(--white);
+  transition:all .2s;
+}
+.card-cta:hover{transform:translateY(-1px);text-decoration:none}
+.card-cta.red{background:var(--red);box-shadow:0 4px 16px rgba(204,20,24,0.25)}
+.card-cta.red:hover{background:var(--red-dark);color:var(--white)}
+.card-cta.blue{background:var(--blue);box-shadow:0 4px 16px rgba(37,99,235,0.25)}
+.card-cta.blue:hover{background:#1D4ED8;color:var(--white)}
+.card-cta.green{background:var(--green);box-shadow:0 4px 16px rgba(5,150,105,0.25)}
+.card-cta.green:hover{background:#047857;color:var(--white)}
+
+/* ─── About ──────────────────────────────────────────────────── */
+.about-section{padding:80px 24px}
+.about-container{max-width:1100px;margin:0 auto}
+.about-card{
   display:flex;align-items:center;gap:40px;
   background:var(--white);
   border-radius:16px;
@@ -257,33 +214,16 @@ section:nth-child(even){background:var(--light)}
   box-shadow:var(--shadow);
   border:1px solid var(--border);
 }
-.instructor-avatar{
+.about-avatar{
   width:120px;height:120px;border-radius:50%;
   background:var(--red);
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
 }
-.instructor-avatar span{
-  font-size:42px;font-weight:800;color:var(--white);
-}
-.instructor-info h3{font-size:22px;font-weight:700;margin-bottom:4px}
-.instructor-info .role{font-size:14px;color:var(--red);font-weight:600;margin-bottom:12px}
-.instructor-info p{font-size:14px;color:var(--gray);line-height:1.7}
-
-/* ─── Registration ───────────────────────────────────────────── */
-.register-box{
-  max-width:600px;margin:0 auto;
-  text-align:center;
-}
-.register-box p{font-size:16px;color:var(--gray);margin-bottom:32px;line-height:1.7}
-.register-placeholder{
-  background:var(--light);
-  border:2px dashed var(--border);
-  border-radius:12px;
-  padding:48px 32px;
-  color:var(--gray);
-  font-size:14px;
-}
+.about-avatar span{font-size:42px;font-weight:800;color:var(--white)}
+.about-info h3{font-size:22px;font-weight:700;margin-bottom:4px}
+.about-info .role{font-size:14px;color:var(--red);font-weight:600;margin-bottom:12px}
+.about-info p{font-size:14px;color:var(--gray);line-height:1.7}
 
 /* ─── Footer ─────────────────────────────────────────────────── */
 footer{
@@ -291,15 +231,9 @@ footer{
   padding:40px 24px;text-align:center;
   font-size:13px;
 }
-footer .footer-brand{
-  font-size:16px;font-weight:700;
-  color:var(--white);margin-bottom:8px;
-}
+footer .footer-brand{font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px}
 footer a{color:var(--red)}
-footer .footer-links{
-  display:flex;gap:24px;justify-content:center;
-  margin-top:16px;
-}
+footer .footer-links{display:flex;gap:24px;justify-content:center;margin-top:16px;flex-wrap:wrap}
 footer .footer-links a{color:rgba(255,255,255,.6);font-size:13px}
 footer .footer-links a:hover{color:var(--white)}
 
@@ -315,16 +249,12 @@ footer .footer-links a:hover{color:var(--white)}
   }
   .nav-links.open{display:flex}
   .nav-links a{padding:14px 24px;border-bottom:1px solid var(--border);width:100%}
-  .nav-cta{margin:12px 24px;text-align:center;width:calc(100% - 48px) !important}
   .hamburger{display:block}
-  .hero{padding:100px 20px 50px}
-  .hero-meta{gap:16px}
-  .session-card{flex-direction:column}
-  .session-num{flex-direction:row;gap:6px;min-width:auto;padding:12px 20px}
-  .session-info{padding:16px 20px}
-  .instructor-card{flex-direction:column;text-align:center;gap:24px}
-  .curriculum-grid{grid-template-columns:1fr}
-  section{padding:60px 20px}
+  .hero{padding:100px 20px 50px;min-height:50vh}
+  .courses-grid{grid-template-columns:1fr}
+  .about-card{flex-direction:column;text-align:center;gap:24px}
+  .courses-section{padding:60px 20px}
+  .about-section{padding:60px 20px}
 }
 </style>
 </head>
@@ -333,7 +263,7 @@ footer .footer-links a:hover{color:var(--white)}
 <!-- ─── Navigation ─────────────────────────────────────────────── -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo">
+    <a href="index.html" class="logo">
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="36" height="36" rx="8" fill="#CC1418"/>
         <path d="M8 10h5l5 12L23 10h5L20 28h-4L8 10z" fill="white"/>
@@ -345,11 +275,8 @@ footer .footer-links a:hover{color:var(--white)}
       </div>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="#schedule">Schedule</a>
-      <a href="#curriculum">Curriculum</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#instructor">Instructor</a>
-      <a href="#register" class="nav-cta">Register Now</a>
+      <a href="#courses">Courses</a>
+      <a href="#about">About</a>
     </div>
     <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -360,166 +287,125 @@ footer .footer-links a:hover{color:var(--white)}
 <!-- ─── Hero ───────────────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge">New Batch Starting July 2026</div>
-    <h1>Master <span>Agentic AI</span> with Apache JMeter</h1>
-    <p>Learn to build AI-powered performance testing pipelines from scratch. No prior AI or JMeter experience needed.</p>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        July 11 &ndash; Sep 12, 2026
-      </div>
-      <div class="hero-meta-item">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        Saturdays &bull; 11 AM &ndash; 2 PM
-      </div>
-      <div class="hero-meta-item">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        10 Modules &bull; 10 Saturdays
-      </div>
-    </div>
-    <div class="hero-buttons">
-      <a href="#register" class="btn btn-primary">Register Now</a>
-      <a href="#curriculum" class="btn btn-outline">View Curriculum</a>
-    </div>
+    <h1>Level Up Your <span>Tech Career</span></h1>
+    <p>Hands-on training programs in Performance Testing, AI-Powered Testing, and Interview Preparation.</p>
+    <p class="tagline">By Vasanth Shanmugam &bull; Industry Practitioner &bull; Trusted by Professionals Worldwide</p>
   </div>
 </section>
 
-<!-- ─── Schedule ───────────────────────────────────────────────── -->
-<section id="schedule">
-  <div class="container">
-    <div class="section-label">Schedule</div>
-    <div class="section-title">10 Saturdays. 10 Modules. Complete Mastery.</div>
-    <div class="section-subtitle">Every Saturday, 11:00 AM &ndash; 2:00 PM. One module per session with hands-on labs.</div>
+<!-- ─── Course Cards ──────────────────────────────────────────── -->
+<section class="courses-section" id="courses">
+  <div class="courses-container">
+    <div class="courses-header">
+      <div class="label">Our Courses</div>
+      <h2>Choose Your Learning Path</h2>
+      <p>From weekend interview prep to intensive bootcamps, find the program that fits your goals.</p>
+    </div>
 
-    <div class="schedule-grid">
+    <div class="courses-grid">
 
-      <div class="session-card">
-        <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">1</span></div>
-        <div class="session-info">
-          <div class="session-date">Saturday, July 11, 2026</div>
-          <div class="session-module">Module 0: Course Overview &amp; Setup</div>
-          <div class="session-desc">Environment setup, verify Java, JMeter &amp; Python. Your first API call to Claude.</div>
-          <div class="session-time">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            11:00 AM &ndash; 2:00 PM
+      <!-- Card 1: Agentic AI with JMeter -->
+      <div class="course-card">
+        <div class="card-banner red">
+          <div class="card-badge">New Batch &mdash; July 2026</div>
+          <h3>Agentic AI with Apache JMeter</h3>
+          <p>Build AI-powered performance testing pipelines from scratch using Claude AI &amp; JMeter.</p>
+        </div>
+        <div class="card-body">
+          <ul class="card-details">
+            <li>
+              <span class="icon">&#128197;</span>
+              <span><span class="highlight">July 11 &ndash; Sep 12, 2026</span></span>
+            </li>
+            <li>
+              <span class="icon">&#9200;</span>
+              <span>Sat 11 AM &ndash; 1 PM (UK) / 3:30 &ndash; 5:30 PM (IST)</span>
+            </li>
+            <li>
+              <span class="icon">&#128218;</span>
+              <span>10 Modules &bull; 20 Hours</span>
+            </li>
+            <li>
+              <span class="icon">&#127891;</span>
+              <span>Hands-on labs &amp; capstone project</span>
+            </li>
+          </ul>
+          <div class="card-price">
+            <span class="currency">&#8377;</span>
+            <span class="amount">7,999</span>
+            <span class="note">One-time</span>
           </div>
+          <a href="agentic-ai.html" class="card-cta red">View Course &rarr;</a>
         </div>
       </div>
 
-      <div class="session-card">
-        <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">2</span></div>
-        <div class="session-info">
-          <div class="session-date">Saturday, July 18, 2026</div>
-          <div class="session-module">Module 1: JMeter Fundamentals</div>
-          <div class="session-desc">Thread groups, samplers, listeners. Build and run your first load test from scratch.</div>
-          <div class="session-time">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            11:00 AM &ndash; 2:00 PM
+      <!-- Card 2: JMeter Training Bootcamp -->
+      <div class="course-card">
+        <div class="card-banner blue">
+          <div class="card-badge">Starting July 11, 2026</div>
+          <h3>JMeter Training Bootcamp</h3>
+          <p>8-week hands-on JMeter training with protocols, InfluxDB &amp; Grafana monitoring, and CI/CD pipelines.</p>
+        </div>
+        <div class="card-body">
+          <ul class="card-details">
+            <li>
+              <span class="icon">&#128197;</span>
+              <span><span class="highlight">July 11 &ndash; Aug 30, 2026</span></span>
+            </li>
+            <li>
+              <span class="icon">&#9200;</span>
+              <span>Sat 1:30 &ndash; 3:30 PM (UK) / 6:00 &ndash; 8:00 PM (IST)</span>
+            </li>
+            <li>
+              <span class="icon">&#128197;</span>
+              <span>Sat Training + Sun Reverse KT</span>
+            </li>
+            <li>
+              <span class="icon">&#128218;</span>
+              <span>Web, API &amp; RTE Protocols &bull; 16 Sessions</span>
+            </li>
+          </ul>
+          <div class="card-price">
+            <span class="currency">&#8377;</span>
+            <span class="amount">15,000</span>
+            <span class="note">One-time</span>
           </div>
+          <a href="interview-prep.html" class="card-cta blue">View Course &rarr;</a>
         </div>
       </div>
 
-      <div class="session-card">
-        <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">3</span></div>
-        <div class="session-info">
-          <div class="session-date">Saturday, July 25, 2026</div>
-          <div class="session-module">Module 2: Claude API Foundations</div>
-          <div class="session-desc">Anthropic SDK, prompt engineering, structured output. System prompts &amp; caching.</div>
-          <div class="session-time">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            11:00 AM &ndash; 2:00 PM
-          </div>
+      <!-- Card 3: Performance Testing / Engineering Bootcamp -->
+      <div class="course-card">
+        <div class="card-banner green">
+          <div class="card-badge">Starting August 2026</div>
+          <h3>Performance Testing / Engineering Bootcamp</h3>
+          <p>21-week intensive program covering JMeter, LoadRunner, NeoLoad &amp; k6 with hands-on labs.</p>
         </div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">4</span></div>
-        <div class="session-info">
-          <div class="session-date">Saturday, August 1, 2026</div>
-          <div class="session-module">Module 3: AI-Assisted Test Design</div>
-          <div class="session-desc">Use Claude to generate JMX test plans from natural language requirements.</div>
-          <div class="session-time">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            11:00 AM &ndash; 2:00 PM
+        <div class="card-body">
+          <ul class="card-details">
+            <li>
+              <span class="icon">&#128197;</span>
+              <span><span class="highlight">Aug 1 &ndash; Dec 19, 2026</span></span>
+            </li>
+            <li>
+              <span class="icon">&#9200;</span>
+              <span>Sat 5:30&ndash;7:30 AM (UK) / 10:00 AM&ndash;12:00 PM (IST)</span>
+            </li>
+            <li>
+              <span class="icon">&#127758;</span>
+              <span>Sun 6:00&ndash;7:00 AM (UK) / 10:30&ndash;11:30 AM (IST)</span>
+            </li>
+            <li>
+              <span class="icon">&#128218;</span>
+              <span>21 Weeks &bull; 5 Phases &bull; 63 Hours</span>
+            </li>
+          </ul>
+          <div class="card-price">
+            <span class="currency">&#8377;</span>
+            <span class="amount">10,000</span>
+            <span class="note">One-time</span>
           </div>
-        </div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">5</span></div>
-        <div class="session-info">
-          <div class="session-date">Saturday, August 8, 2026</div>
-          <div class="session-module">Module 4: AI Result Analysis</div>
-          <div class="session-desc">Feed JTL results to Claude for automated bottleneck detection &amp; recommendations.</div>
-          <div class="session-time">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            11:00 AM &ndash; 2:00 PM
-          </div>
-        </div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">6</span></div>
-        <div class="session-info">
-          <div class="session-date">Saturday, August 15, 2026</div>
-          <div class="session-module">Module 5: Agentic Pipeline</div>
-          <div class="session-desc">Build the full end-to-end pipeline: generate &rarr; run &rarr; analyze &rarr; report automatically.</div>
-          <div class="session-time">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            11:00 AM &ndash; 2:00 PM
-          </div>
-        </div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">7</span></div>
-        <div class="session-info">
-          <div class="session-date">Saturday, August 22, 2026</div>
-          <div class="session-module">Module 6: Advanced Patterns</div>
-          <div class="session-desc">Tool use, feedback loops, multi-turn conversations. Level up your AI integration.</div>
-          <div class="session-time">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            11:00 AM &ndash; 2:00 PM
-          </div>
-        </div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">8</span></div>
-        <div class="session-info">
-          <div class="session-date">Saturday, August 29, 2026</div>
-          <div class="session-module">Module 7: Capstone Project</div>
-          <div class="session-desc">Design and build your own AI-powered performance testing solution end-to-end.</div>
-          <div class="session-time">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            11:00 AM &ndash; 2:00 PM
-          </div>
-        </div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">9</span></div>
-        <div class="session-info">
-          <div class="session-date">Saturday, September 5, 2026</div>
-          <div class="session-module">Module 8: Production Hardening</div>
-          <div class="session-desc">CI/CD with GitHub Actions, Azure Blob storage, logging, cost tracking &amp; monitoring.</div>
-          <div class="session-time">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            11:00 AM &ndash; 2:00 PM
-          </div>
-        </div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">10</span></div>
-        <div class="session-info">
-          <div class="session-date">Saturday, September 12, 2026</div>
-          <div class="session-module">Module 9: Package &amp; Deploy</div>
-          <div class="session-desc">Build an installable CLI toolkit. Publish your package. Course wrap-up &amp; next steps.</div>
-          <div class="session-time">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            11:00 AM &ndash; 2:00 PM
-          </div>
+          <a href="bootcamp.html" class="card-cta green">View Course &rarr;</a>
         </div>
       </div>
 
@@ -527,157 +413,19 @@ footer .footer-links a:hover{color:var(--white)}
   </div>
 </section>
 
-<!-- ─── Curriculum ─────────────────────────────────────────────── -->
-<section id="curriculum">
-  <div class="container">
-    <div class="section-label">Curriculum</div>
-    <div class="section-title">What You'll Learn</div>
-    <div class="section-subtitle">From zero to building production-ready AI-powered performance testing pipelines. Hands-on labs in every session.</div>
-
-    <div class="curriculum-grid">
-
-      <div class="module-card">
-        <div class="module-num">00</div>
-        <h3>Course Overview &amp; Setup</h3>
-        <p>Install Python, JMeter, and configure your Claude API key. Verify your environment with our health-check script.</p>
-        <div class="module-tags"><span class="module-tag">Setup</span><span class="module-tag">Python</span><span class="module-tag">JMeter</span></div>
-      </div>
-
-      <div class="module-card">
-        <div class="module-num">01</div>
-        <h3>JMeter Fundamentals</h3>
-        <p>Master thread groups, HTTP samplers, assertions &amp; listeners. Build your first load test from scratch.</p>
-        <div class="module-tags"><span class="module-tag">JMeter</span><span class="module-tag">Load Testing</span></div>
-      </div>
-
-      <div class="module-card">
-        <div class="module-num">02</div>
-        <h3>Claude API Foundations</h3>
-        <p>Anthropic SDK, prompt engineering, structured output, system prompts &amp; prompt caching for cost optimization.</p>
-        <div class="module-tags"><span class="module-tag">Claude API</span><span class="module-tag">Prompting</span></div>
-      </div>
-
-      <div class="module-card">
-        <div class="module-num">03</div>
-        <h3>AI-Assisted Test Design</h3>
-        <p>Generate complete JMX test plans from natural language descriptions. Let AI handle the XML complexity.</p>
-        <div class="module-tags"><span class="module-tag">AI + JMeter</span><span class="module-tag">Code Gen</span></div>
-      </div>
-
-      <div class="module-card">
-        <div class="module-num">04</div>
-        <h3>AI Result Analysis</h3>
-        <p>Automatically analyze JTL results with Claude. Detect bottlenecks, anomalies &amp; get actionable recommendations.</p>
-        <div class="module-tags"><span class="module-tag">Analytics</span><span class="module-tag">AI</span></div>
-      </div>
-
-      <div class="module-card">
-        <div class="module-num">05</div>
-        <h3>Agentic Pipeline</h3>
-        <p>Build the full 4-stage pipeline: Generate &rarr; Run &rarr; Analyze &rarr; Report. Fully automated, end-to-end.</p>
-        <div class="module-tags"><span class="module-tag">Pipeline</span><span class="module-tag">Automation</span></div>
-      </div>
-
-      <div class="module-card">
-        <div class="module-num">06</div>
-        <h3>Advanced Patterns</h3>
-        <p>Tool use, multi-turn feedback loops, retry strategies &amp; agentic decision-making patterns.</p>
-        <div class="module-tags"><span class="module-tag">Tool Use</span><span class="module-tag">Advanced</span></div>
-      </div>
-
-      <div class="module-card">
-        <div class="module-num">07</div>
-        <h3>Capstone Project</h3>
-        <p>Design and implement your own AI-powered performance testing solution for a real-world scenario.</p>
-        <div class="module-tags"><span class="module-tag">Project</span><span class="module-tag">Independent</span></div>
-      </div>
-
-      <div class="module-card">
-        <div class="module-num">08</div>
-        <h3>Production Hardening</h3>
-        <p>CI/CD with GitHub Actions, Azure Blob storage, structured logging, cost tracking &amp; monitoring.</p>
-        <div class="module-tags"><span class="module-tag">CI/CD</span><span class="module-tag">Azure</span><span class="module-tag">DevOps</span></div>
-      </div>
-
-      <div class="module-card">
-        <div class="module-num">09</div>
-        <h3>Package &amp; Deploy</h3>
-        <p>Create an installable CLI toolkit with Click. Publish to PyPI. Automated releases with GitHub tags.</p>
-        <div class="module-tags"><span class="module-tag">Packaging</span><span class="module-tag">CLI</span><span class="module-tag">PyPI</span></div>
-      </div>
-
+<!-- ─── About ────────────────────────────────────────────────── -->
+<section id="about" class="about-section">
+  <div class="about-container">
+    <div class="courses-header" style="margin-bottom:36px">
+      <div class="label">Your Instructor</div>
+      <h2>Learn from an Expert</h2>
     </div>
-  </div>
-</section>
-
-<!-- ─── Pricing ───────────────────────────────────────────────── -->
-<section id="pricing">
-  <div class="container" style="text-align:center">
-    <div class="section-label">Pricing</div>
-    <div class="section-title" style="text-align:center">Invest in Your Career</div>
-    <div class="section-subtitle center">One-time fee. Lifetime access to course materials &amp; recordings.</div>
-
-    <div class="pricing-card">
-      <div class="pricing-header">
-        <h3>Complete Course</h3>
-        <p>10 Modules &bull; 10 Saturdays &bull; 30 Hours</p>
-      </div>
-      <div class="pricing-amount">
-        <div class="price"><span class="price-currency">&#8377;</span>7,999</div>
-        <div class="price-note">One-time payment &bull; All inclusive</div>
-      </div>
-      <ul class="pricing-features">
-        <li><span class="check">&#10003;</span> 10 live Saturday sessions (11 AM &ndash; 2 PM)</li>
-        <li><span class="check">&#10003;</span> Hands-on labs with real-world projects</li>
-        <li><span class="check">&#10003;</span> Complete source code &amp; JMeter templates</li>
-        <li><span class="check">&#10003;</span> Session recordings for revision</li>
-        <li><span class="check">&#10003;</span> Quizzes &amp; assessments after each module</li>
-        <li><span class="check">&#10003;</span> Certificate of completion</li>
-        <li><span class="check">&#10003;</span> Lifetime access to course materials</li>
-      </ul>
-      <div class="pricing-footer">
-        <a href="#register" class="btn btn-primary" style="width:100%;justify-content:center">Register Now</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Instructor ───────────────────────────────────────────── -->
-<section id="instructor">
-  <div class="container">
-    <div class="section-label">Your Instructor</div>
-    <div class="section-title">Learn from an Expert</div>
-    <div class="section-subtitle">Industry practitioner with hands-on experience in performance testing and AI.</div>
-
-    <div class="instructor-card">
-      <div class="instructor-avatar"><span>VS</span></div>
-      <div class="instructor-info">
+    <div class="about-card">
+      <div class="about-avatar"><span>VS</span></div>
+      <div class="about-info">
         <h3>Vasanth Shanmugam</h3>
         <div class="role">Founder, Vasanth Tech Talk</div>
-        <p>Performance testing specialist with deep expertise in Apache JMeter and AI-assisted testing workflows. Passionate about making complex technology accessible to beginners through hands-on, practical training.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Register ──────────────────────────────────────────────── -->
-<section id="register">
-  <div class="container">
-    <div class="register-box">
-      <div class="section-label">Registration</div>
-      <div class="section-title" style="text-align:center">Secure Your Spot</div>
-      <p>Seats are limited to ensure personalized attention. Register now to join the July 2026 batch.</p>
-      <div class="register-placeholder">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5" style="margin-bottom:12px">
-          <path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-        </svg>
-        <br>
-        Google Form registration will be embedded here.<br>
-        <span style="font-size:12px;color:#9CA3AF">Replace this placeholder with your Google Form embed code.</span>
-        <!--
-          To embed your Google Form, replace this entire div with:
-          <iframe src="YOUR_GOOGLE_FORM_URL" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" style="border-radius:12px">Loading…</iframe>
-        -->
+        <p>Performance testing specialist with deep expertise in Apache JMeter, AI-assisted testing workflows, and performance engineering. Passionate about making complex technology accessible through hands-on, practical training that helps professionals level up their careers.</p>
       </div>
     </div>
   </div>
@@ -688,10 +436,9 @@ footer .footer-links a:hover{color:var(--white)}
   <div class="footer-brand">Vasanth Tech Talk</div>
   <p>Where Technology Meets Career Growth</p>
   <div class="footer-links">
-    <a href="#schedule">Schedule</a>
-    <a href="#curriculum">Curriculum</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#register">Register</a>
+    <a href="agentic-ai.html">Agentic AI Course</a>
+    <a href="interview-prep.html">JMeter Bootcamp</a>
+    <a href="bootcamp.html">Bootcamp</a>
   </div>
   <p style="margin-top:24px">&copy; 2026 Vasanth Tech Talk. All rights reserved.</p>
 </footer>
