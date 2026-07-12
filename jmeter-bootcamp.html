@@ -206,10 +206,46 @@ section:nth-child(even){background:var(--light)}
   display:inline-block;
   font-size:10px;font-weight:600;
   padding:2px 8px;border-radius:4px;
-  margin-top:6px;
+  margin-top:6px;margin-right:6px;
 }
 .session-tag.training{background:var(--blue-soft);color:var(--blue)}
 .session-tag.reverse-kt{background:#F3E8FF;color:#7C3AED}
+.session-tag.completed-tag{background:#ECFDF5;color:#059669}
+.session-card.completed{border-left:4px solid #059669}
+.watch-link{
+  display:inline-flex;align-items:center;gap:5px;
+  margin-top:8px;
+  font-size:12px;font-weight:700;color:var(--blue);
+}
+.watch-link:hover{text-decoration:underline}
+
+.progress-box{
+  max-width:100%;margin-bottom:40px;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px 24px;
+  box-shadow:var(--shadow);
+}
+.progress-box-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;flex-wrap:wrap;gap:6px}
+.progress-box-header h3{font-size:15px;font-weight:700;color:var(--black)}
+.progress-box-header .percent{font-size:18px;font-weight:800;color:var(--blue)}
+.progress-box-track{width:100%;height:10px;background:var(--light);border-radius:6px;overflow:hidden}
+.progress-box-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue-dark));border-radius:6px}
+.progress-box-note{font-size:13px;color:var(--gray);margin-top:8px}
+
+.hero-progress{
+  max-width:480px;margin:0 auto 32px;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px 20px;
+  box-shadow:var(--shadow);
+  text-align:left;
+}
+.hero-progress .progress-box-header h3{font-size:13px}
+.hero-progress .progress-box-header .percent{font-size:15px}
+.hero-progress .progress-box-note{font-size:12px;margin-top:6px}
 
 .curriculum-grid{
   display:grid;
@@ -367,7 +403,7 @@ footer .footer-links a:hover{color:var(--white)}
 
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge">Starting July 11, 2026</div>
+    <div class="hero-badge">In Progress &bull; Started July 11, 2026</div>
     <h1>Apache <span>JMeter</span> Training Bootcamp</h1>
     <p>8-week intensive hands-on training covering protocols, scripting, real-time monitoring with InfluxDB &amp; Grafana, and CI/CD pipelines. Saturdays for training, Sundays for reverse KT.</p>
     <div class="hero-meta">
@@ -384,8 +420,16 @@ footer .footer-links a:hover{color:var(--white)}
         Sun: 7:30 &ndash; 8:30 AM (UK) / 12:00 &ndash; 1:00 PM (IST)
       </div>
     </div>
-    <div style="font-size:14px;color:var(--gray);margin-bottom:40px">
+    <div style="font-size:14px;color:var(--gray);margin-bottom:24px">
       16 Sessions &bull; Sat Training (2 hrs) + Sun Reverse KT (1 hr)
+    </div>
+    <div class="hero-progress">
+      <div class="progress-box-header">
+        <h3>Training Progress</h3>
+        <span class="percent">6% Complete</span>
+      </div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:6%"></div></div>
+      <div class="progress-box-note">1 of 16 sessions conducted &bull; Week 1 Saturday training held Jul 11, 2026</div>
     </div>
     <div class="hero-buttons">
       <a href="#register" class="btn btn-primary">Register Now</a>
@@ -423,6 +467,15 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="section-title">8 Weeks. 16 Sessions. JMeter Mastery.</div>
     <div class="section-subtitle">Saturday 1:30 &ndash; 3:30 PM UK / 6:00 &ndash; 8:00 PM IST. Sunday 7:30 &ndash; 8:30 AM UK / 12:00 &ndash; 1:00 PM IST.</div>
 
+    <div class="progress-box">
+      <div class="progress-box-header">
+        <h3>Overall Training Progress</h3>
+        <span class="percent">6% Complete</span>
+      </div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:6%"></div></div>
+      <div class="progress-box-note">1 of 16 sessions conducted so far. Week 1 Saturday training (JMeter Fundamentals &amp; First Test) was held on Jul 11, 2026 &mdash; recording linked below.</div>
+    </div>
+
     <!-- July -->
     <div class="month-block">
       <div class="month-header">
@@ -430,13 +483,18 @@ footer .footer-links a:hover{color:var(--white)}
         <span class="month-theme">Foundations &amp; Protocols</span>
       </div>
       <div class="schedule-grid">
-        <div class="session-card">
+        <div class="session-card completed">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">1</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, July 11, 2026</div>
             <div class="session-module">JMeter Fundamentals &amp; First Test</div>
             <div class="session-desc">Installation, thread groups, HTTP samplers, timers, assertions, listeners. Build and run your first load test.</div>
             <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/YyQuk7lgHkk" class="watch-link" target="_blank" rel="noopener">&#9654; Watch Recording (Part 1)</a>
+            <br>
+            <a href="https://youtu.be/WhDuS37BgiY" class="watch-link" target="_blank" rel="noopener">&#9654; Watch Recording (Part 2)</a>
           </div>
         </div>
         <div class="session-card sunday">
@@ -519,7 +577,7 @@ footer .footer-links a:hover{color:var(--white)}
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">5</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, August 8, 2026</div>
-            <div class="session-module">Protocol &mdash; RTE (Real-Time Enterprise)</div>
+            <div class="session-module">Protocol &mdash; RTE (Remote Terminal Emulator)</div>
             <div class="session-desc">Terminal emulator protocols, Citrix testing, mainframe/3270 interactions, RTE sampler configuration and wait conditions.</div>
             <span class="session-tag training">Training</span>
           </div>
