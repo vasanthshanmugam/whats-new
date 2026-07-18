@@ -291,7 +291,7 @@ section:nth-child(even){background:var(--light)}
 .quiz-card{
   background:var(--white);
   border-radius:12px;
-  padding:28px;
+  padding:0;
   box-shadow:var(--shadow);
   border:1px solid var(--border);
   transition:all .3s;
@@ -299,10 +299,19 @@ section:nth-child(even){background:var(--light)}
   overflow:hidden;
 }
 .quiz-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
-.quiz-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:#7C3AED;
+.quiz-thumb-link{display:block}
+.quiz-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000}
+.quiz-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.quiz-card:hover .quiz-thumb img{transform:scale(1.06)}
+.quiz-play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(0,0,0,.65);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;pointer-events:none;
+  box-shadow:0 2px 12px rgba(0,0,0,.3);
 }
+.quiz-card-body{padding:24px 28px 28px}
 .quiz-num{
   display:inline-flex;align-items:center;justify-content:center;
   width:32px;height:32px;border-radius:8px;
@@ -758,17 +767,33 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="quiz-grid">
 
       <div class="quiz-card">
-        <div class="quiz-num">Q1</div>
-        <h3>Week 1 Quiz</h3>
-        <p>JMeter Bootcamp Training &mdash; Week 1 Quiz covering fundamentals and first test concepts.</p>
-        <a href="https://youtu.be/4ah-YMIqL2M" class="watch-link" target="_blank" rel="noopener">&#9654; Watch Quiz</a>
+        <a href="https://youtu.be/4ah-YMIqL2M" class="quiz-thumb-link" target="_blank" rel="noopener">
+          <div class="quiz-thumb">
+            <img src="https://img.youtube.com/vi/4ah-YMIqL2M/hqdefault.jpg" alt="Week 1 Quiz video thumbnail" loading="lazy">
+            <span class="quiz-play">&#9658;</span>
+          </div>
+        </a>
+        <div class="quiz-card-body">
+          <div class="quiz-num">Q1</div>
+          <h3>Week 1 Quiz</h3>
+          <p>JMeter Bootcamp Training &mdash; Week 1 Quiz covering fundamentals and first test concepts.</p>
+          <a href="https://youtu.be/4ah-YMIqL2M" class="watch-link" target="_blank" rel="noopener">&#9654; Watch Quiz</a>
+        </div>
       </div>
 
       <div class="quiz-card">
-        <div class="quiz-num">Q2</div>
-        <h3>Week 2 Challenge</h3>
-        <p>JMeter Thread Group &amp; Test Plan Quiz Challenge &mdash; can you score 10/10?</p>
-        <a href="https://youtu.be/CDa0XWyrbzc" class="watch-link" target="_blank" rel="noopener">&#9654; Watch Challenge</a>
+        <a href="https://youtu.be/CDa0XWyrbzc" class="quiz-thumb-link" target="_blank" rel="noopener">
+          <div class="quiz-thumb">
+            <img src="https://img.youtube.com/vi/CDa0XWyrbzc/hqdefault.jpg" alt="Week 2 Challenge video thumbnail" loading="lazy">
+            <span class="quiz-play">&#9658;</span>
+          </div>
+        </a>
+        <div class="quiz-card-body">
+          <div class="quiz-num">Q2</div>
+          <h3>Week 2 Challenge</h3>
+          <p>JMeter Thread Group &amp; Test Plan Quiz Challenge &mdash; can you score 10/10?</p>
+          <a href="https://youtu.be/CDa0XWyrbzc" class="watch-link" target="_blank" rel="noopener">&#9654; Watch Challenge</a>
+        </div>
       </div>
 
     </div>
