@@ -283,6 +283,36 @@ section:nth-child(even){background:var(--light)}
   border-radius:4px;font-weight:500;
 }
 
+.quiz-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:20px;
+}
+.quiz-card{
+  background:var(--white);
+  border-radius:12px;
+  padding:28px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+  transition:all .3s;
+  position:relative;
+  overflow:hidden;
+}
+.quiz-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.quiz-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:#7C3AED;
+}
+.quiz-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:8px;
+  background:#F3E8FF;color:#7C3AED;
+  font-size:13px;font-weight:800;
+  margin-bottom:14px;
+}
+.quiz-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--black)}
+.quiz-card p{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:12px}
+
 .pricing-card{
   max-width:480px;margin:0 auto;
   background:var(--white);
@@ -392,6 +422,7 @@ footer .footer-links a:hover{color:var(--white)}
       <a href="index.html">All Courses</a>
       <a href="#schedule">Schedule</a>
       <a href="#curriculum">Curriculum</a>
+      <a href="#quiz">Quiz</a>
       <a href="#pricing">Pricing</a>
       <a href="#register" class="nav-cta">Register Now</a>
     </div>
@@ -426,10 +457,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="hero-progress">
       <div class="progress-box-header">
         <h3>Training Progress</h3>
-        <span class="percent">6% Complete</span>
+        <span class="percent">19% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:6%"></div></div>
-      <div class="progress-box-note">1 of 16 sessions conducted &bull; Week 1 Saturday training held Jul 11, 2026</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:18.75%"></div></div>
+      <div class="progress-box-note">3 of 16 sessions conducted &bull; Week 1 (Jul 11&ndash;12) &amp; Week 2 Saturday (Jul 18) held</div>
     </div>
     <div class="hero-buttons">
       <a href="#register" class="btn btn-primary">Register Now</a>
@@ -470,10 +501,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="progress-box">
       <div class="progress-box-header">
         <h3>Overall Training Progress</h3>
-        <span class="percent">6% Complete</span>
+        <span class="percent">19% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:6%"></div></div>
-      <div class="progress-box-note">1 of 16 sessions conducted so far. Week 1 Saturday training (JMeter Fundamentals &amp; First Test) was held on Jul 11, 2026 &mdash; recording linked below.</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:18.75%"></div></div>
+      <div class="progress-box-note">3 of 16 sessions conducted so far &mdash; Week 1 training &amp; reverse KT (Jul 11&ndash;12) and Week 2 Saturday training (Jul 18) &mdash; recordings linked below.</div>
     </div>
 
     <!-- July -->
@@ -497,23 +528,31 @@ footer .footer-links a:hover{color:var(--white)}
             <a href="https://youtu.be/WhDuS37BgiY" class="watch-link" target="_blank" rel="noopener">&#9654; Watch Recording (Part 2)</a>
           </div>
         </div>
-        <div class="session-card sunday">
+        <div class="session-card sunday completed">
           <div class="session-num sunday-num"><span class="wk-label">Week</span><span class="wk-number">1</span></div>
           <div class="session-info">
             <div class="session-date">Sunday, July 12, 2026</div>
             <div class="session-module">Reverse KT &mdash; JMeter Fundamentals</div>
             <div class="session-desc">Teach back fundamentals, build a test plan from scratch, Q&amp;A and troubleshooting.</div>
             <span class="session-tag reverse-kt">Reverse KT</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/YlHU1xbM3Oc" class="watch-link" target="_blank" rel="noopener">&#9654; Test Plan &amp; Thread Group Training</a>
+            <br>
+            <a href="https://youtu.be/ma5ye5S5UhM" class="watch-link" target="_blank" rel="noopener">&#9654; Config Elements</a>
           </div>
         </div>
 
-        <div class="session-card">
+        <div class="session-card completed">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">2</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, July 18, 2026</div>
             <div class="session-module">Correlation &amp; Parameterization</div>
             <div class="session-desc">Dynamic values, regular expressions, JSON/CSS extractors, CSV data sets, user-defined variables, and cookie management.</div>
             <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/Hn1rcHxnT5Y" class="watch-link" target="_blank" rel="noopener">&#9654; Watch Recording</a>
           </div>
         </div>
         <div class="session-card sunday">
@@ -709,6 +748,33 @@ footer .footer-links a:hover{color:var(--white)}
   </div>
 </section>
 
+<!-- ─── Quiz ──────────────────────────────────────────────────── -->
+<section id="quiz">
+  <div class="container">
+    <div class="section-label">Practice</div>
+    <div class="section-title">Test Your Knowledge</div>
+    <div class="section-subtitle">Weekly quiz challenges to reinforce what you've learned &mdash; watch, attempt along, and see how you score.</div>
+
+    <div class="quiz-grid">
+
+      <div class="quiz-card">
+        <div class="quiz-num">Q1</div>
+        <h3>Week 1 Quiz</h3>
+        <p>JMeter Bootcamp Training &mdash; Week 1 Quiz covering fundamentals and first test concepts.</p>
+        <a href="https://youtu.be/4ah-YMIqL2M" class="watch-link" target="_blank" rel="noopener">&#9654; Watch Quiz</a>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-num">Q2</div>
+        <h3>Week 2 Challenge</h3>
+        <p>JMeter Thread Group &amp; Test Plan Quiz Challenge &mdash; can you score 10/10?</p>
+        <a href="https://youtu.be/CDa0XWyrbzc" class="watch-link" target="_blank" rel="noopener">&#9654; Watch Challenge</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ─── Pricing ───────────────────────────────────────────────── -->
 <section id="pricing">
   <div class="container" style="text-align:center">
@@ -779,6 +845,7 @@ footer .footer-links a:hover{color:var(--white)}
     <a href="index.html">All Courses</a>
     <a href="#schedule">Schedule</a>
     <a href="#curriculum">Curriculum</a>
+    <a href="#quiz">Quiz</a>
     <a href="#pricing">Pricing</a>
   </div>
   <p style="margin-top:24px">&copy; 2026 Vasanth Tech Talk. All rights reserved.</p>
