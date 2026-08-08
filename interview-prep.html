@@ -185,8 +185,11 @@ section:nth-child(even){background:var(--light)}
   margin-top:6px;margin-right:6px;
 }
 .session-tag.training{background:var(--green-soft);color:var(--green)}
+.session-tag.qa-drill{background:#F3E8FF;color:#7C3AED}
 .session-tag.completed-tag{background:#ECFDF5;color:#059669}
 .session-card.completed{border-left:4px solid #059669}
+.session-card.sunday{border-left:4px solid #7C3AED}
+.session-num.sunday-num{background:#7C3AED}
 .watch-link{
   display:inline-flex;align-items:center;gap:5px;
   margin-top:8px;
@@ -412,10 +415,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="hero-progress">
       <div class="progress-box-header">
         <h3>Training Progress</h3>
-        <span class="percent">5% Complete</span>
+        <span class="percent">7% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:5%"></div></div>
-      <div class="progress-box-note">1 of 21 weeks conducted &bull; Week 1 (Aug 1) held</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:7%"></div></div>
+      <div class="progress-box-note">3 of 42 sessions conducted &bull; Week 1 (Sat + Sun) &amp; Week 2 Saturday held</div>
     </div>
     <div class="hero-buttons">
       <a href="#register" class="btn btn-primary">Register Now</a>
@@ -433,10 +436,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="progress-box">
       <div class="progress-box-header">
         <h3>Overall Training Progress</h3>
-        <span class="percent">5% Complete</span>
+        <span class="percent">7% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:5%"></div></div>
-      <div class="progress-box-note">1 of 21 weeks conducted so far &mdash; Week 1 (Aug 1) &mdash; recording linked below.</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:7%"></div></div>
+      <div class="progress-box-note">3 of 42 sessions conducted so far &mdash; Week 1 (Sat + Sun) &amp; Week 2 Saturday &mdash; recordings linked below.</div>
     </div>
 
     <!-- Month 1: August -->
@@ -458,12 +461,28 @@ footer .footer-links a:hover{color:var(--white)}
             <a href="https://youtu.be/EA0ssWxPM0k" class="watch-link" target="_blank" rel="noopener">&#9654; Master Performance Testing Fundamentals for Interviews | Day 01</a>
           </div>
         </div>
-        <div class="session-card">
+        <div class="session-card sunday completed">
+          <div class="session-num sunday-num"><span class="wk-label">Week</span><span class="wk-number">1</span></div>
+          <div class="session-info">
+            <div class="session-date">Sunday, August 2, 2026</div>
+            <div class="session-module">Interview Q&amp;A Drill &mdash; Performance Testing Fundamentals</div>
+            <div class="session-desc">Follow-up interview Q&amp;A drill reinforcing Week 1 fundamentals &mdash; practicing how to structure and deliver confident answers.</div>
+            <span class="session-tag qa-drill">Q&amp;A Drill</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/6DCuyKKhdwY" class="watch-link" target="_blank" rel="noopener">&#9654; Performance Testing Fundamentals - Interview Training - Day 02</a>
+          </div>
+        </div>
+        <div class="session-card completed">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">2</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, August 8, 2026</div>
             <div class="session-module">Life Cycle, Key Metrics &amp; System Architecture</div>
             <div class="session-desc">Talking through the performance testing life cycle and KPIs (response time, throughput, error rate, percentiles, TPS) plus client-server, 3-tier &amp; microservices architecture &mdash; common whiteboard questions.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/whrNX5cp6IA" class="watch-link" target="_blank" rel="noopener">&#9654; Do you still make these mistakes in your #performancetesting #interviews?</a>
           </div>
         </div>
         <div class="session-card">
