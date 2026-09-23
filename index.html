@@ -211,6 +211,36 @@ nav{
 .card-cta.green{background:var(--green);box-shadow:0 4px 16px rgba(5,150,105,0.25)}
 .card-cta.green:hover{background:#047857;color:var(--white)}
 
+/* ─── Course Tabs ────────────────────────────────────────────── */
+.course-tabs{
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  margin:24px 0 32px;
+}
+.tab-btn{
+  padding:10px 22px;border-radius:999px;
+  border:1px solid var(--border);background:var(--white);
+  font-size:14px;font-weight:700;color:var(--gray);
+  cursor:pointer;transition:all .2s;
+}
+.tab-btn:hover{border-color:var(--black);color:var(--black)}
+.tab-btn.active{background:var(--black);color:var(--white);border-color:var(--black)}
+.tab-panel{display:none}
+.tab-panel.active{display:grid}
+.card-banner.closed{position:relative}
+.card-banner.closed::after{
+  content:"CLOSED";
+  position:absolute;top:20px;right:20px;
+  background:rgba(0,0,0,.35);
+  padding:4px 10px;border-radius:6px;
+  font-size:10px;font-weight:800;letter-spacing:.6px;
+}
+.card-note{
+  background:var(--light);border:1px solid var(--border);
+  border-radius:10px;padding:12px 14px;margin-bottom:20px;
+  font-size:12.5px;color:var(--black);line-height:1.5;
+}
+.card-note a{font-weight:700}
+
 /* ─── About ──────────────────────────────────────────────────── */
 .about-section{padding:80px 24px}
 .about-container{max-width:1100px;margin:0 auto}
@@ -314,7 +344,12 @@ footer .footer-links a:hover{color:var(--white)}
       </div>
     </div>
 
-    <div class="courses-grid">
+    <div class="course-tabs">
+      <button class="tab-btn active" data-tab="active-courses" onclick="showCourseTab('active-courses',this)">Active Courses</button>
+      <button class="tab-btn" data-tab="completed-courses" onclick="showCourseTab('completed-courses',this)">Completed Courses</button>
+    </div>
+
+    <div class="courses-grid tab-panel active" id="active-courses">
 
       <!-- Card 1: Agentic AI with JMeter -->
       <div class="course-card">
@@ -352,53 +387,6 @@ footer .footer-links a:hover{color:var(--white)}
         </div>
       </div>
 
-      <!-- Card 2: JMeter Training Bootcamp -->
-      <div class="course-card">
-        <div class="card-banner blue">
-          <div class="card-badge">In Progress &bull; Started Jul 11, 2026</div>
-          <h3>JMeter Training Bootcamp</h3>
-          <p>8-week hands-on JMeter training with protocols, InfluxDB &amp; Grafana monitoring, and CI/CD pipelines.</p>
-        </div>
-        <div class="card-body">
-          <ul class="card-details">
-            <li>
-              <span class="icon">&#128197;</span>
-              <span><span class="highlight">July 11 &ndash; Aug 30, 2026</span></span>
-            </li>
-            <li>
-              <span class="icon">&#9200;</span>
-              <span>Sat 1:30 &ndash; 3:30 PM (UK) / 6:00 &ndash; 8:00 PM (IST)</span>
-            </li>
-            <li>
-              <span class="icon">&#128197;</span>
-              <span>Sat Training + Sun Reverse KT</span>
-            </li>
-            <li>
-              <span class="icon">&#128218;</span>
-              <span>Web, API &amp; RTE Protocols &bull; 16 Sessions</span>
-            </li>
-            <li>
-              <span class="icon">&#127919;</span>
-              <span><a href="jmeter-bootcamp.html#quiz" style="color:var(--blue);font-weight:600">Take the Weekly Quiz Challenges &rarr;</a></span>
-            </li>
-          </ul>
-          <div class="card-progress">
-            <div class="card-progress-header">
-              <span>Training Progress</span>
-              <span class="percent" style="color:var(--blue)">56%</span>
-            </div>
-            <div class="card-progress-track"><div class="card-progress-fill" style="width:56%;background:var(--blue)"></div></div>
-            <div class="card-progress-note">9 of 16 sessions completed &bull; Weeks 1&ndash;5 conducted</div>
-          </div>
-          <div class="card-price">
-            <span class="currency">INR </span>
-            <span class="amount">15,000</span>
-            <span class="note">One-time</span>
-          </div>
-          <a href="jmeter-bootcamp.html" class="card-cta blue">View Course &rarr;</a>
-        </div>
-      </div>
-
       <!-- Card 3: Performance Testing Interview Prep Bootcamp -->
       <div class="course-card">
         <div class="card-banner green">
@@ -428,10 +416,10 @@ footer .footer-links a:hover{color:var(--white)}
           <div class="card-progress">
             <div class="card-progress-header">
               <span>Training Progress</span>
-              <span class="percent" style="color:var(--green)">7%</span>
+              <span class="percent" style="color:var(--green)">19%</span>
             </div>
-            <div class="card-progress-track"><div class="card-progress-fill" style="width:7%;background:var(--green)"></div></div>
-            <div class="card-progress-note">3 of 42 sessions completed &bull; Week 1 (Sat + Sun) &amp; Week 2 Saturday conducted</div>
+            <div class="card-progress-track"><div class="card-progress-fill" style="width:19%;background:var(--green)"></div></div>
+            <div class="card-progress-note">8 of 42 sessions completed &bull; Weeks 1&ndash;4 (Sat + Sun) conducted</div>
           </div>
           <div class="card-price">
             <span class="currency" style="text-decoration:line-through;color:#9CA3AF;font-size:13px">INR 25,000</span>
@@ -444,8 +432,62 @@ footer .footer-links a:hover{color:var(--white)}
       </div>
 
     </div>
+
+    <div class="courses-grid tab-panel" id="completed-courses">
+
+      <!-- Card 2: JMeter Training Bootcamp (Completed) -->
+      <div class="course-card">
+        <div class="card-banner blue closed">
+          <div class="card-badge">&#10003; Completed &bull; Jul 11 &ndash; Aug 30, 2026</div>
+          <h3>JMeter Training Bootcamp</h3>
+          <p>8-week hands-on JMeter training with protocols, InfluxDB &amp; Grafana monitoring, and CI/CD pipelines.</p>
+        </div>
+        <div class="card-body">
+          <ul class="card-details">
+            <li>
+              <span class="icon">&#128197;</span>
+              <span><span class="highlight">July 11 &ndash; Aug 30, 2026</span></span>
+            </li>
+            <li>
+              <span class="icon">&#128197;</span>
+              <span>Sat Training + Sun Reverse KT</span>
+            </li>
+            <li>
+              <span class="icon">&#128218;</span>
+              <span>Web, API &amp; RTE Protocols &bull; 16 Sessions</span>
+            </li>
+            <li>
+              <span class="icon">&#127919;</span>
+              <span><a href="jmeter-bootcamp.html#quiz" style="color:var(--blue);font-weight:600">Take the Weekly Quiz Challenges &rarr;</a></span>
+            </li>
+          </ul>
+          <div class="card-progress">
+            <div class="card-progress-header">
+              <span>Training Progress</span>
+              <span class="percent" style="color:var(--blue)">100%</span>
+            </div>
+            <div class="card-progress-track"><div class="card-progress-fill" style="width:100%;background:var(--blue)"></div></div>
+            <div class="card-progress-note">16 of 16 sessions completed &bull; All 8 weeks conducted</div>
+          </div>
+          <div class="card-note">
+            &#128231; This batch is closed for new enrollment. Want to learn from the recorded sessions? Email <a href="mailto:vasanthtce@gmail.com">vasanthtce@gmail.com</a>.
+          </div>
+          <a href="jmeter-bootcamp.html" class="card-cta blue">View Recordings &rarr;</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
+
+<script>
+function showCourseTab(id, btn){
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+</script>
 
 <!-- ─── About ────────────────────────────────────────────────── -->
 <section id="about" class="about-section">
