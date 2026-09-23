@@ -196,6 +196,16 @@ section:nth-child(even){background:var(--light)}
   font-size:12px;font-weight:700;color:var(--green);
 }
 .watch-link:hover{text-decoration:underline}
+.session-summary{
+  background:var(--green-soft);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:10px 12px;
+  margin-top:10px;
+  font-size:12px;color:var(--black);line-height:1.6;
+}
+.session-summary strong{color:var(--green)}
+.session-summary ul{margin:6px 0 0 16px}
 
 .progress-box{
   max-width:100%;margin-bottom:40px;
@@ -459,6 +469,16 @@ footer .footer-links a:hover{color:var(--white)}
             <span class="session-tag completed-tag">&#10003; Conducted</span>
             <br>
             <a href="https://youtu.be/EA0ssWxPM0k" class="watch-link" target="_blank" rel="noopener">&#9654; Master Performance Testing Fundamentals for Interviews | Day 01</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Define performance testing as evaluating how a system behaves under a given workload &mdash; response time, throughput &amp; stability, not just "does it work."</li>
+                <li>Always quantify the business cost of skipping it: production incidents, lost revenue &amp; reputational damage cost far more than catching issues in staging.</li>
+                <li>Functional testing = correctness (single user); non-functional/performance testing = quality of service (speed, scale, security, usability) under many simulated users.</li>
+                <li>Load testing: ramp up to the expected/anticipated concurrency, hold steady state, and validate response time, throughput &amp; error rate against SLAs.</li>
+                <li>Concurrency (isolation) testing catches race conditions when multiple users hit the same resource at once &mdash; and the difference between active vs. concurrent users (mid-transaction vs. still in the system during think time).</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="session-card sunday completed">
@@ -471,6 +491,16 @@ footer .footer-links a:hover{color:var(--white)}
             <span class="session-tag completed-tag">&#10003; Conducted</span>
             <br>
             <a href="https://youtu.be/6DCuyKKhdwY" class="watch-link" target="_blank" rel="noopener">&#9654; Performance Testing Fundamentals - Interview Training - Day 02</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Rapid-fire quiz recap: load vs. stress vs. spike vs. soak/endurance, volume vs. capacity, virtual vs. concurrent vs. active users, horizontal vs. vertical scaling, response time vs. latency, and why percentiles beat averages.</li>
+                <li>The performance testing life cycle breaks into six phases: NFR gathering, test planning &amp; strategy, environment &amp; data setup, test design &amp; scripting, execution, and analysis &amp; reporting &mdash; always in that order.</li>
+                <li>If a client can't articulate NFRs, drive discovery yourself: stakeholder workshops, architecture review to spot likely bottlenecks, pulling real production traffic (peak concurrency, transaction mix), applying the 80/20 (Pareto) rule, and running a baseline test.</li>
+                <li>A transaction only counts as "successful" under NFR when several conditions align together: a valid response assertion, the right response code (200/204/302, not 4xx/5xx), SLA met, no bottlenecks, and the correct load/volume &mdash; not just one passing metric like in functional testing.</li>
+                <li>Scenario drills: doubling the expected load unexpectedly is a stress test (finding the breaking point), not scalability; hitting a fixed SLA at 10,000 users calls for an incremental load test (ramp in steps, not straight to 10k); and a soak test where response time stays flat then climbs after several hours points to memory leaks or connection pool exhaustion.</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="session-card completed">
@@ -485,6 +515,17 @@ footer .footer-links a:hover{color:var(--white)}
             <a href="https://youtu.be/whrNX5cp6IA" class="watch-link" target="_blank" rel="noopener">&#9654; Do you still make these mistakes in your #performancetesting #interviews?</a>
             <br>
             <a href="https://youtu.be/09mn8J-lGPI" class="watch-link" target="_blank" rel="noopener">&#9654; Day 03 | System Architecture explained End to End ? Performance Testing Interview Questions</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Quiz recap of Week 1's fundamentals: functional vs. non-functional placement, load/stress/spike/soak, volume vs. capacity, virtual/concurrent/active users, horizontal vs. vertical scaling, latency vs. response time, percentiles over averages, think time &amp; saturation point.</li>
+                <li>Three-tier architecture &mdash; presentation, application &amp; database &mdash; are independent logical layers that only ever talk to their immediate neighbor; the web tier never touches the database directly.</li>
+                <li>Know your servers by tier and don't mix them up: web servers are Nginx, Apache &amp; IIS; app servers are Tomcat, JBoss, WildFly, Node.js, .NET Core &amp; Spring Boot.</li>
+                <li>Sticky (in-memory) sessions pin a user to one server so their cart/state persists &mdash; good for UX, but a memory cost on the app tier over time; other app-tier watch items: GC pauses, thread pool saturation, DB connection pool usage, cache hit ratio.</li>
+                <li>Database tier is the "hard ceiling": know SQL vs. NoSQL engines, and be ready to explain indexes (speed reads but can slow writes/maintenance if overused) and stored procedures (save query compile time, not just reusability), plus deadlocks and slow-query monitoring.</li>
+                <li>Trace the full request journey &mdash; browser &rarr; DNS &rarr; load balancer/TLS/CDN &rarr; web tier &rarr; app tier &rarr; DB tier &mdash; and match metrics to each hop: TTFB/paint metrics on web, response time/throughput/error rate/GC on app, query time/locks/connection pool on DB.</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="session-card sunday completed">
