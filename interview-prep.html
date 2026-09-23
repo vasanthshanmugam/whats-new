@@ -540,6 +540,17 @@ footer .footer-links a:hover{color:var(--white)}
             <a href="https://youtu.be/Q05ftX2P-CU" class="watch-link" target="_blank" rel="noopener">&#9654; Day 04 | Architecture Quiz on Performance Testing Interview Preparation | 9th August</a>
             <br>
             <a href="https://youtu.be/TBUeRpufAUU" class="watch-link" target="_blank" rel="noopener">&#9654; Day 04 | Hands on Demo on How Web Server, App Server, DB Server works? | E2E Microservice Architect</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Architecture quiz drills the Week 2 concepts further: why each tier talking only to its immediate neighbor is what makes 3-tier independent/testable/scalable; the two-tier "schema change means redeploying every client" risk; and why a low app-tier CPU can still mean the bottleneck is a downstream wait, not compute.</li>
+                <li>Scaling order from easiest to hardest to scale horizontally: web (stateless, just replicate static files) &rarr; app (stateless but more connection management) &rarr; database (stateful, hard ceiling). Externalizing session state to Redis doesn't eliminate the bottleneck &mdash; it relocates it, since Redis can become the new ceiling.</li>
+                <li>Classic diagnostic scenario: checkout response time spikes with 0% errors and low CPU on web/app &mdash; point to the database (connection pool/lock contention), and rule out load balancer or DNS only with evidence, not assumption.</li>
+                <li>On-prem &rarr; cloud shift turns fixed capacity into elastic/on-demand capacity; watch for cold-start penalties and hard concurrency ceilings on serverless (PaaS/functions), cloud-specific DB failure modes like burstable/serverless auto-pausing once credits run out, and always capture a pre-migration baseline since "faster or slower" is a guess without one.</li>
+                <li>Post-migration, identical concurrency doesn't guarantee identical response times &mdash; a "noisy neighbor" on shared hardware or a cheaper default disk tier is a common cause of ~20% degradation, and comparing one load level only proves parity there, not that autoscaling actually works.</li>
+                <li>Hands-on demo traced the full request journey end-to-end in a single-tier Docker setup: DNS resolves the URL to an IP, the TCP three-way handshake (SYN/SYN-ACK/ACK) opens the connection, TLS negotiates encryption for HTTPS, then the web server (Nginx, acting as the "waiter") hands the request off to the app and database tiers.</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="session-card completed">
