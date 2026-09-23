@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In &mdash; Vasanth Tech Talk</title>
+<style>
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#F3F4F6;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}
+  .card{background:#fff;border-radius:14px;box-shadow:0 12px 48px rgba(0,0,0,.12);padding:40px 36px;max-width:360px;width:100%}
+  h1{font-size:20px;margin:0 0 6px;color:#1A1A1A}
+  p.sub{font-size:13px;color:#6B7280;margin:0 0 24px}
+  label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#1A1A1A}
+  input{width:100%;padding:10px 12px;border:1px solid #E5E7EB;border-radius:8px;font-size:14px;margin-bottom:16px}
+  button{width:100%;padding:12px;border:none;border-radius:8px;background:#059669;color:#fff;font-weight:600;font-size:15px;cursor:pointer}
+  button:disabled{opacity:.6;cursor:default}
+  .error{color:#CC1418;font-size:13px;margin:-8px 0 16px;display:none}
+  .info{color:#059669;font-size:13px;margin:-8px 0 16px;display:none}
+  .forgot-link{display:block;text-align:right;font-size:12px;color:#059669;background:none;border:none;padding:0;margin:-10px 0 16px;cursor:pointer;text-decoration:underline}
+  .forgot-link:disabled{opacity:.6;cursor:default}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Sign In</h1>
+    <p class="sub">This page is restricted to registered participants.</p>
+    <div id="error" class="error"></div>
+    <div id="info" class="info"></div>
+    <form id="loginForm">
+      <label for="email">Email</label>
+      <input id="email" type="email" required autocomplete="username">
+      <label for="password">Password</label>
+      <input id="password" type="password" required autocomplete="current-password">
+      <button type="button" id="forgotBtn" class="forgot-link">Forgot password?</button>
+      <button id="submitBtn" type="submit">Sign In</button>
+    </form>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    // TODO: replace with your Firebase project's web app config
+    // (Firebase console -> Project settings -> General -> Your apps -> SDK setup and configuration).
+    // These values are safe to expose publicly; they only identify the project.
+    const firebaseConfig = {
+      apiKey: "AIzaSyB2DSbIl6Jpt81hySqFna_NC5gplh4LnCY",
+      authDomain: "interview-bootcamp-b5035.firebaseapp.com",
+      projectId: "interview-bootcamp-b5035",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const form = document.getElementById("loginForm");
+    const errorEl = document.getElementById("error");
+    const infoEl = document.getElementById("info");
+    const submitBtn = document.getElementById("submitBtn");
+    const forgotBtn = document.getElementById("forgotBtn");
+    const params = new URLSearchParams(location.search);
+    const redirectTo = params.get("redirect") || "/interview-prep.html";
+    if (params.get("denied")) {
+      errorEl.textContent = "That account isn't authorized for this page.";
+      errorEl.style.display = "block";
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.style.display = "none";
+      infoEl.style.display = "none";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Signing in…";
+      try {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        await signInWithEmailAndPassword(auth, email, password);
+        location.href = redirectTo;
+      } catch (err) {
+        errorEl.textContent = "Sign-in failed. Check your email and password, or contact the instructor.";
+        errorEl.style.display = "block";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Sign In";
+      }
+    });
+
+    forgotBtn.addEventListener("click", async () => {
+      errorEl.style.display = "none";
+      infoEl.style.display = "none";
+      const email = document.getElementById("email").value.trim();
+      if (!email) {
+        errorEl.textContent = "Enter your email above first, then click “Forgot password?”";
+        errorEl.style.display = "block";
+        return;
+      }
+      forgotBtn.disabled = true;
+      forgotBtn.textContent = "Sending…";
+      try {
+        await sendPasswordResetEmail(auth, email);
+        infoEl.textContent = "If that email is registered, a reset link has been sent — check your inbox.";
+        infoEl.style.display = "block";
+      } catch (err) {
+        // Same message regardless of whether the email exists, so this
+        // can't be used to probe which emails are registered.
+        infoEl.textContent = "If that email is registered, a reset link has been sent — check your inbox.";
+        infoEl.style.display = "block";
+      } finally {
+        forgotBtn.disabled = false;
+        forgotBtn.textContent = "Forgot password?";
+      }
+    });
+  </script>
+</body>
+</html>

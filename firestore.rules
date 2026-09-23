@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Only these accounts may read the gated page content. Create each
+    // account manually in Firebase Console -> Authentication -> Users
+    // (no public sign-up), then list the same email here.
+    match /protected/{docId} {
+      allow read: if request.auth != null
+        && request.auth.token.email in [
+          "singhanupam554554@gmail.com",
+          "ravikumarbojja.bojja@gmail.com",
+          "subhamdasonline@gmail.com",
+          "rajkumarpttesting@gmail.com",
+          "anucu.20@gmail.com",
+          "prithvi.vishwanath123@gmail.com",
+          "ghemasuba@gmail.com",
+          "shahulha80@gmail.com",
+          "rohin33@gmail.com",
+          "ganeshbaradkar@gmail.com",
+          "sandeepmvs93@gmail.com",
+          "kalyani.pt95@gmail.com",
+          "muntajeshaal@gmail.com",
+          "kunchala0514@gmail.com",
+          "vasanthtce@gmail.com",
+          "geeta.arya.info@gmail.com",
+          "srinivasarao.2k@gmail.com"
+        ];
+      allow write: if false; // only the Admin SDK (upload script) can write
+    }
+  }
+}
