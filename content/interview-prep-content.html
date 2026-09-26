@@ -425,10 +425,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="hero-progress">
       <div class="progress-box-header">
         <h3>Training Progress</h3>
-        <span class="percent">26% Complete</span>
+        <span class="percent">29% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:26%"></div></div>
-      <div class="progress-box-note">11 of 42 sessions conducted &bull; Weeks 1&ndash;5 (Sat) + Weeks 1&ndash;4 (Sun) + Week 8 (Sat + Sun) held</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:29%"></div></div>
+      <div class="progress-box-note">12 of 42 sessions conducted &bull; Weeks 1&ndash;5 (Sat) + Weeks 1&ndash;4 (Sun) + Week 8 (Sat + Sun) + Week 9 (Sat) held</div>
     </div>
     <div class="hero-buttons">
       <a href="#register" class="btn btn-primary">Register Now</a>
@@ -446,10 +446,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="progress-box">
       <div class="progress-box-header">
         <h3>Overall Training Progress</h3>
-        <span class="percent">26% Complete</span>
+        <span class="percent">29% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:26%"></div></div>
-      <div class="progress-box-note">11 of 42 sessions conducted so far &mdash; Weeks 1&ndash;5 (Sat), Weeks 1&ndash;4 (Sun) &amp; Week 8 (Sat + Sun) &mdash; recordings linked below.</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:29%"></div></div>
+      <div class="progress-box-note">12 of 42 sessions conducted so far &mdash; Weeks 1&ndash;5 (Sat), Weeks 1&ndash;4 (Sun), Week 8 (Sat + Sun) &amp; Week 9 (Sat) &mdash; recordings linked below.</div>
     </div>
 
     <!-- Month 1: August -->
@@ -669,12 +669,28 @@ footer .footer-links a:hover{color:var(--white)}
             <a href="https://youtu.be/jdINFfBBaqg" class="watch-link" target="_blank" rel="noopener">&#9654; GIT - End to End Training for Performance Engineers</a>
           </div>
         </div>
-        <div class="session-card">
+        <div class="session-card completed">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">9</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, September 26, 2026</div>
-            <div class="session-module">k6 &mdash; Modern, Cloud-Native Load Testing with JavaScript</div>
-            <div class="session-desc">CLI &amp; cloud execution, thresholds, checks, CI/CD-friendly workflows &mdash; and how to explain k6's cloud-native, developer-first approach in an interview.</div>
+            <div class="session-module">The Ultimate Guide to JMeter Scripting for CI/CD</div>
+            <div class="session-desc">Building JMeter scripts that run cleanly in CI/CD pipelines &mdash; and how to explain your scripting and automation approach when an interviewer asks about shift-left performance testing.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/bTPLwy0huj8" class="watch-link" target="_blank" rel="noopener">&#9654; The Ultimate Guide to JMeter Scripting for CI/CD</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Set the stage for CI/CD pipeline testing: performance scripts must be repeatable, parameterised and non-interactive so they can run unattended as a pipeline stage &mdash; that is what "shift-left" means in practice.</li>
+                <li>JMeter scripting fundamentals and session prerequisites: confirm JMeter, Java, browser and proxy settings are ready before recording, so the recording session doesn't fail on environment problems.</li>
+                <li>Recording flow: navigate the application deliberately, configure the browser/system proxy to point at JMeter's HTTP(S) Test Script Recorder, and know how to troubleshoot common recording issues (certificate, proxy and traffic-capture problems).</li>
+                <li>Clean up the recorded script before using it: remove noise requests (third-party and static calls), give samplers meaningful names, group steps into transaction controllers, and parameterise hard-coded values.</li>
+                <li>Dynamic correlation is the core skill: find values that change per session (tokens, IDs), extract them with regex/JSON/CSS extractors, and reuse them in later requests &mdash; the classic "walk me through your script" interview topic.</li>
+                <li>Debug extraction failures systematically: check the response the server actually returned, verify the extractor expression and match number, and use debug samplers and View Results Tree to see which variable was (or wasn't) set.</li>
+                <li>Preparing for advanced CI/CD integration: a clean, correlated, parameterised script is the prerequisite for running JMeter in non-GUI mode from Jenkins, GitHub Actions or Azure DevOps pipelines.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
