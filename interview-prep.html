@@ -189,6 +189,9 @@ section:nth-child(even){background:var(--light)}
 .session-tag.completed-tag{background:#ECFDF5;color:#059669}
 .session-card.completed{border-left:4px solid #059669}
 .session-card.sunday{border-left:4px solid #7C3AED}
+.session-card.cancelled{border-left:4px solid #DC2626;opacity:.85}
+.session-card.cancelled .session-module,.session-card.cancelled .session-desc{text-decoration:line-through;color:#9CA3AF}
+.session-tag.cancelled-tag{background:#FEF2F2;color:#DC2626}
 .session-num.sunday-num{background:#7C3AED}
 .watch-link{
   display:inline-flex;align-items:center;gap:5px;
@@ -425,10 +428,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="hero-progress">
       <div class="progress-box-header">
         <h3>Training Progress</h3>
-        <span class="percent">36% Complete</span>
+        <span class="percent">38% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:36%"></div></div>
-      <div class="progress-box-note">15 of 42 sessions conducted &bull; Weeks 1&ndash;5 (Sat) + Weeks 1&ndash;4 (Sun) + Week 8 (Sat + Sun) + Week 9 (Sat + Sun) + Week 10 (Sat + Sun) held</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:38%"></div></div>
+      <div class="progress-box-note">16 of 42 sessions conducted &bull; Weeks 1&ndash;5 (Sat) + Weeks 1&ndash;4 (Sun) + Week 8 (Sat + Sun) + Week 9 (Sat + Sun) + Week 10 (Sat + Sun) + Week 11 (Sun) held</div>
     </div>
     <div class="hero-buttons">
       <a href="#register" class="btn btn-primary">Register Now</a>
@@ -446,10 +449,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="progress-box">
       <div class="progress-box-header">
         <h3>Overall Training Progress</h3>
-        <span class="percent">36% Complete</span>
+        <span class="percent">38% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:36%"></div></div>
-      <div class="progress-box-note">15 of 42 sessions conducted so far &mdash; Weeks 1&ndash;5 (Sat), Weeks 1&ndash;4 (Sun), Week 8 (Sat + Sun), Week 9 (Sat + Sun) &amp; Week 10 (Sat + Sun).</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:38%"></div></div>
+      <div class="progress-box-note">16 of 42 sessions conducted so far &mdash; Weeks 1&ndash;5 (Sat), Weeks 1&ndash;4 (Sun), Week 8 (Sat + Sun), Week 9 (Sat + Sun), Week 10 (Sat + Sun) &amp; Week 11 (Sun).</div>
     </div>
 
     <!-- Month 1: August -->
@@ -709,20 +712,31 @@ footer .footer-links a:hover{color:var(--white)}
             <span class="session-tag completed-tag">&#10003; Conducted</span>
           </div>
         </div>
-        <div class="session-card">
+        <div class="session-card cancelled">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">11</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, October 10, 2026</div>
             <div class="session-module">Dynatrace Deep Dive &mdash; Live Demos &amp; Reading Thread States</div>
             <div class="session-desc">Hands-on Dynatrace walkthroughs you can reproduce live in an interview: tracing slow transactions, PurePath analysis, and reading thread states to explain what the application was doing.</div>
+            <span class="session-tag cancelled-tag">&#10007; Cancelled &mdash; trainer was unwell</span>
           </div>
         </div>
-        <div class="session-card sunday">
+        <div class="session-card sunday completed">
           <div class="session-num sunday-num"><span class="wk-label">Week</span><span class="wk-number">11</span></div>
           <div class="session-info">
             <div class="session-date">Sunday, October 11, 2026</div>
-            <div class="session-module">Tool Comparison &mdash; "Which Tool Would You Choose?"</div>
-            <div class="session-desc">JMeter vs LoadRunner vs NeoLoad vs k6: licensing, scalability, protocol support, scripting effort &mdash; structured answers for the tool-comparison question every panel asks.</div>
+            <div class="session-module">JMeter with Jenkins &mdash; Part 01 &amp; Part 02 Training</div>
+            <div class="session-desc">Two-part hands-on session running JMeter tests from Jenkins &mdash; taking the GitHub-versioned scripts from Weeks 9&ndash;10 and turning them into a repeatable, automated performance test job.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Part 01: setting up a Jenkins job that pulls the JMeter script from GitHub and runs it in non-GUI (command-line) mode.</li>
+                <li>Part 02: publishing JMeter results and HTML reports in Jenkins so every build shows response times, throughput and errors.</li>
+                <li>How to explain "how do you run performance tests in CI/CD?" in an interview, using Jenkins as the worked example.</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="session-card">
