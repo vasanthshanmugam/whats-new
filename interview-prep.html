@@ -428,10 +428,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="hero-progress">
       <div class="progress-box-header">
         <h3>Training Progress</h3>
-        <span class="percent">38% Complete</span>
+        <span class="percent">52% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:38%"></div></div>
-      <div class="progress-box-note">16 of 42 sessions conducted &bull; Weeks 1&ndash;5 (Sat) + Weeks 1&ndash;4 (Sun) + Week 8 (Sat + Sun) + Week 9 (Sat + Sun) + Week 10 (Sat + Sun) + Week 11 (Sun) held</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:52%"></div></div>
+      <div class="progress-box-note">22 of 42 sessions conducted &bull; Weeks 1&ndash;5 (Sat) + Weeks 1&ndash;4 (Sun) + Weeks 8&ndash;10 (Sat + Sun) + Week 11 (Sun) + Week 14 (Sat + Sun) + Week 16 (Sat + Sun) + Week 17 (Sat + Sun) held</div>
     </div>
     <div class="hero-buttons">
       <a href="#register" class="btn btn-primary">Register Now</a>
@@ -449,10 +449,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="progress-box">
       <div class="progress-box-header">
         <h3>Overall Training Progress</h3>
-        <span class="percent">38% Complete</span>
+        <span class="percent">52% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:38%"></div></div>
-      <div class="progress-box-note">16 of 42 sessions conducted so far &mdash; Weeks 1&ndash;5 (Sat), Weeks 1&ndash;4 (Sun), Week 8 (Sat + Sun), Week 9 (Sat + Sun), Week 10 (Sat + Sun) &amp; Week 11 (Sun).</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:52%"></div></div>
+      <div class="progress-box-note">22 of 42 sessions conducted so far &mdash; Weeks 1&ndash;5 (Sat), Weeks 1&ndash;4 (Sun), Weeks 8&ndash;10 (Sat + Sun), Week 11 (Sun), Week 14 (Sat + Sun), Week 16 (Sat + Sun) &amp; Week 17 (Sat + Sun).</div>
     </div>
 
     <!-- Month 1: August -->
@@ -710,6 +710,7 @@ footer .footer-links a:hover{color:var(--white)}
             <div class="session-desc">Follow-up hands-on session tying GitHub and JMeter together into one end-to-end automation workflow &mdash; from a versioned test script in the repository to an automated test run you can walk an interviewer through.</div>
             <span class="session-tag qa-drill">Q&amp;A Drill</span>
             <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <div class="session-desc" style="margin-top:8px">Also covered: JMeter Plugins in GitHub Actions &mdash; Why Your Pipeline Fails (and the Fix)</div>
           </div>
         </div>
         <div class="session-card cancelled">
@@ -755,12 +756,24 @@ footer .footer-links a:hover{color:var(--white)}
             <div class="session-desc">Heap vs stack, memory regions, GC algorithms (G1, CMS, ZGC) &mdash; explaining GC tuning decisions the way a panel expects from a performance engineer.</div>
           </div>
         </div>
-        <div class="session-card">
+        <div class="session-card completed">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">14</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, October 31, 2026</div>
-            <div class="session-module">Bottleneck ID: Thread Dumps, Heap Dumps &amp; Connection Pooling</div>
-            <div class="session-desc">Reading thread dumps &amp; heap dumps, diagnosing database connection pooling issues and slow queries &mdash; walking an interviewer through a root-cause-analysis story step by step.</div>
+            <div class="session-module">Thread Dump Training &mdash; Day 01</div>
+            <div class="session-desc">Introduction to thread dumps: thread states, how to capture dumps, and the bottleneck patterns they reveal &mdash; the start of a root-cause-analysis story you can walk an interviewer through.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+          </div>
+        </div>
+        <div class="session-card sunday completed">
+          <div class="session-num sunday-num"><span class="wk-label">Week</span><span class="wk-number">14</span></div>
+          <div class="session-info">
+            <div class="session-date">Sunday, November 1, 2026</div>
+            <div class="session-module">Thread Dumps Training &mdash; Part 2</div>
+            <div class="session-desc">Follow-up thread dump session continuing Saturday&rsquo;s training &mdash; reading more thread states and tying them back to the bottleneck.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
           </div>
         </div>
       </div>
@@ -781,20 +794,44 @@ footer .footer-links a:hover{color:var(--white)}
             <div class="session-desc">Forecasting resource needs, horizontal vs vertical scaling, auto-scaling, distributed testing &mdash; answering cloud-performance strategy questions across all three major providers.</div>
           </div>
         </div>
-        <div class="session-card">
+        <div class="session-card completed">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">16</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, November 14, 2026</div>
-            <div class="session-module">CI/CD Integration &mdash; Explaining Shift-Left in Interviews</div>
-            <div class="session-desc">Jenkins, GitHub Actions, Azure DevOps pipelines, automated quality gates &mdash; describing your end-to-end pipeline clearly and concisely when asked.</div>
+            <div class="session-module">Fix Performance Bottleneck using Thread Dump &mdash; Real Time</div>
+            <div class="session-desc">Real-time session using thread dumps to find and fix a live performance bottleneck &mdash; the root-cause-analysis story interviewers want to hear.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
           </div>
         </div>
-        <div class="session-card">
+        <div class="session-card sunday completed">
+          <div class="session-num sunday-num"><span class="wk-label">Week</span><span class="wk-number">16</span></div>
+          <div class="session-info">
+            <div class="session-date">Sunday, November 15, 2026</div>
+            <div class="session-module">Your Database Connections Are Dying in Transaction &mdash; Here&rsquo;s Why</div>
+            <div class="session-desc">Thread dump scenario during a five-minute load test: how a database idle-in-transaction session timeout makes connections fail fast, and what that does to response times and throughput.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+          </div>
+        </div>
+        <div class="session-card completed">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">17</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, November 21, 2026</div>
-            <div class="session-module">Microservices, API &amp; Database Performance</div>
-            <div class="session-desc">REST/GraphQL/gRPC testing, connection pooling, query optimization &mdash; the system-design-adjacent questions performance engineering interviews increasingly include.</div>
+            <div class="session-module">Why Your Thread Dumps Look &lsquo;Normal&rsquo; (But Might Not Be)</div>
+            <div class="session-desc">Reading thread dumps that look healthy at first glance &mdash; and spotting the signs that something is still wrong.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+          </div>
+        </div>
+        <div class="session-card sunday completed">
+          <div class="session-num sunday-num"><span class="wk-label">Week</span><span class="wk-number">17</span></div>
+          <div class="session-info">
+            <div class="session-date">Sunday, November 22, 2026</div>
+            <div class="session-module">How to Find Lock Contention using Thread Dumps &mdash; Live Demo</div>
+            <div class="session-desc">Live demo finding lock contention in thread dumps &mdash; identifying blocked threads and the lock they are waiting on.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
           </div>
         </div>
         <div class="session-card">

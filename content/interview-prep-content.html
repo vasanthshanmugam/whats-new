@@ -428,10 +428,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="hero-progress">
       <div class="progress-box-header">
         <h3>Training Progress</h3>
-        <span class="percent">38% Complete</span>
+        <span class="percent">52% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:38%"></div></div>
-      <div class="progress-box-note">16 of 42 sessions conducted &bull; Weeks 1&ndash;5 (Sat) + Weeks 1&ndash;4 (Sun) + Week 8 (Sat + Sun) + Week 9 (Sat + Sun) + Week 10 (Sat + Sun) + Week 11 (Sun) held</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:52%"></div></div>
+      <div class="progress-box-note">22 of 42 sessions conducted &bull; Weeks 1&ndash;5 (Sat) + Weeks 1&ndash;4 (Sun) + Weeks 8&ndash;10 (Sat + Sun) + Week 11 (Sun) + Week 14 (Sat + Sun) + Week 16 (Sat + Sun) + Week 17 (Sat + Sun) held</div>
     </div>
     <div class="hero-buttons">
       <a href="#register" class="btn btn-primary">Register Now</a>
@@ -449,10 +449,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="progress-box">
       <div class="progress-box-header">
         <h3>Overall Training Progress</h3>
-        <span class="percent">38% Complete</span>
+        <span class="percent">52% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:38%"></div></div>
-      <div class="progress-box-note">16 of 42 sessions conducted so far &mdash; Weeks 1&ndash;5 (Sat), Weeks 1&ndash;4 (Sun), Week 8 (Sat + Sun), Week 9 (Sat + Sun), Week 10 (Sat + Sun) &amp; Week 11 (Sun) &mdash; recordings linked below.</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:52%"></div></div>
+      <div class="progress-box-note">22 of 42 sessions conducted so far &mdash; Weeks 1&ndash;5 (Sat), Weeks 1&ndash;4 (Sun), Weeks 8&ndash;10 (Sat + Sun), Week 11 (Sun), Week 14 (Sat + Sun), Week 16 (Sat + Sun) &amp; Week 17 (Sat + Sun) &mdash; recordings linked below.</div>
     </div>
 
     <!-- Month 1: August -->
@@ -750,6 +750,16 @@ footer .footer-links a:hover{color:var(--white)}
             <span class="session-tag completed-tag">&#10003; Conducted</span>
             <br>
             <a href="https://youtu.be/OCGZ87MRKR4" class="watch-link" target="_blank" rel="noopener">&#9654; GitHub + JMeter: Complete Automation Workflow</a>
+            <br>
+            <a href="https://youtu.be/Nx9O1Ke9p3M" class="watch-link" target="_blank" rel="noopener">&#9654; JMeter Plugins in GitHub Actions: Why Your Pipeline Fails (and the Fix)</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>A script that runs fine on your laptop fails in GitHub Actions because the runner downloads plain JMeter with no plugins &mdash; it throws <code>CannotResolveClassException</code> for classes like Ultimate Thread Group.</li>
+                <li>The fix adds three steps before the test: install the Plugins Manager and cmdrunner, install the plugin IDs you name (e.g. jpgc-casutg, jpgc-tst, jpgc-functions), then <code>install-for-jmx</code> as a safety net for any plugin the script needs.</li>
+                <li>Cache JMeter plus plugins so later runs are fast, then run the test, check the SLA and upload the HTML report as usual.</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="session-card cancelled">
@@ -799,12 +809,46 @@ footer .footer-links a:hover{color:var(--white)}
             <div class="session-desc">Heap vs stack, memory regions, GC algorithms (G1, CMS, ZGC) &mdash; explaining GC tuning decisions the way a panel expects from a performance engineer.</div>
           </div>
         </div>
-        <div class="session-card">
+        <div class="session-card completed">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">14</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, October 31, 2026</div>
-            <div class="session-module">Bottleneck ID: Thread Dumps, Heap Dumps &amp; Connection Pooling</div>
-            <div class="session-desc">Reading thread dumps &amp; heap dumps, diagnosing database connection pooling issues and slow queries &mdash; walking an interviewer through a root-cause-analysis story step by step.</div>
+            <div class="session-module">Thread Dump Training &mdash; Day 01</div>
+            <div class="session-desc">Introduction to thread dumps: thread states, how to capture dumps, and the bottleneck patterns they reveal &mdash; the start of a root-cause-analysis story you can walk an interviewer through.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/jf9vvMGv5xY" class="watch-link" target="_blank" rel="noopener">&#9654; Thread Dump Training - Day 01</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Thread states explained: RUNNABLE, BLOCKED (waiting for a lock), WAITING/parked (waiting for another thread to wake it) and TIMED_WAITING &mdash; and what each one tells you about the app.</li>
+                <li>Where threads sit in a Java stack: Tomcat request threads, the HikariCP connection pool and the JDBC driver, for both a Spring Boot JAR and a WAR deployed on Tomcat.</li>
+                <li>Scenarios thread dumps solve: deadlocks and circular lock dependencies, threads stuck on slow database calls, and connection pool exhaustion.</li>
+                <li>Always take three dumps about 10 seconds apart, and take them <em>before</em> anyone restarts the server &mdash; one dump is a snapshot, three show what is stuck.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="session-card sunday completed">
+          <div class="session-num sunday-num"><span class="wk-label">Week</span><span class="wk-number">14</span></div>
+          <div class="session-info">
+            <div class="session-date">Sunday, November 1, 2026</div>
+            <div class="session-module">Thread Dumps Training &mdash; Part 2</div>
+            <div class="session-desc">Follow-up thread dump session continuing Saturday&rsquo;s training &mdash; reading more thread states and tying them back to the bottleneck.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/WImYWBayv-s" class="watch-link" target="_blank" rel="noopener">&#9654; Thread dumps Training - Part 2</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Hands-on lab with a real stack: Nginx web server, Spring Boot app server on port 8081, PostgreSQL and a third-party payment partner &mdash; each scenario is one &ldquo;release&rdquo;.</li>
+                <li>Scenario 0 (baseline) vs Scenario 1 (broken): throughput dropped to about a quarter while response times and errors rose &mdash; the symptoms you see first in a load test.</li>
+                <li>In the dumps, groups of threads wait for a database connection in the product and stock repositories &mdash; and a RUNNABLE thread reading a socket is waiting, not busy.</li>
+                <li>Response time alone is not the goal: errors and server CPU are just as critical when you judge a run.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -825,20 +869,88 @@ footer .footer-links a:hover{color:var(--white)}
             <div class="session-desc">Forecasting resource needs, horizontal vs vertical scaling, auto-scaling, distributed testing &mdash; answering cloud-performance strategy questions across all three major providers.</div>
           </div>
         </div>
-        <div class="session-card">
+        <div class="session-card completed">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">16</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, November 14, 2026</div>
-            <div class="session-module">CI/CD Integration &mdash; Explaining Shift-Left in Interviews</div>
-            <div class="session-desc">Jenkins, GitHub Actions, Azure DevOps pipelines, automated quality gates &mdash; describing your end-to-end pipeline clearly and concisely when asked.</div>
+            <div class="session-module">Fix Performance Bottleneck using Thread Dump &mdash; Real Time</div>
+            <div class="session-desc">Real-time session using thread dumps to find and fix a live performance bottleneck &mdash; the root-cause-analysis story interviewers want to hear.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/fzKDZiOJWdQ" class="watch-link" target="_blank" rel="noopener">&#9654; Fix Performance bottleneck using Thread Dump - Real time</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Recap of the S1 broken scenario: a HikariCP pool of 10 connections means 10 of 50 users are served and 40 wait &mdash; <code>LockSupport.parkNanos</code> shows them in TIMED_WAITING with a timeout.</li>
+                <li>Confirmed on the database side with PostgreSQL activity views, then found the slow query behind the long-held connections.</li>
+                <li>Adding the right index cut the query cost by about 80% &mdash; but indexes are not free, so prove which one solves the bottleneck before adding it.</li>
+                <li>Restarting the app only empties the queue for a few seconds; the problem comes straight back until the root cause is fixed.</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="session-card">
+        <div class="session-card sunday completed">
+          <div class="session-num sunday-num"><span class="wk-label">Week</span><span class="wk-number">16</span></div>
+          <div class="session-info">
+            <div class="session-date">Sunday, November 15, 2026</div>
+            <div class="session-module">Your Database Connections Are Dying in Transaction &mdash; Here&rsquo;s Why</div>
+            <div class="session-desc">Thread dump scenario during a five-minute load test: how a database idle-in-transaction session timeout makes connections fail fast, and what that does to response times and throughput.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/VOpZ4ufNyyA" class="watch-link" target="_blank" rel="noopener">&#9654; Your Database Connections Are Dying in Transaction. Here's Why</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Connection leak scenario: requests fail with &ldquo;connection not available&rdquo; after the 30-second HikariCP connection timeout, even though load is normal.</li>
+                <li>Root cause is code that never closes its connection &mdash; no <code>finally</code> block or try-with-resources &mdash; so any exception or early return leaks it. HikariCP leak detection points to the culprit.</li>
+                <li>With auto-commit off, PostgreSQL shows these connections as <em>idle in transaction</em>: they keep locks on the products table and can block schema changes.</li>
+                <li>A restart does not fix a leak &mdash; the pool drains again within seconds. Fix the code and use prepared statements.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="session-card completed">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">17</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, November 21, 2026</div>
-            <div class="session-module">Microservices, API &amp; Database Performance</div>
-            <div class="session-desc">REST/GraphQL/gRPC testing, connection pooling, query optimization &mdash; the system-design-adjacent questions performance engineering interviews increasingly include.</div>
+            <div class="session-module">Why Your Thread Dumps Look &lsquo;Normal&rsquo; (But Might Not Be)</div>
+            <div class="session-desc">Reading thread dumps that look healthy at first glance &mdash; and spotting the signs that something is still wrong.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/J5KoMImlTyY" class="watch-link" target="_blank" rel="noopener">&#9654; Why Your Thread Dumps Look 'Normal' (But Might Not Be)</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Scenario 3: all 200 Tomcat threads show RUNNABLE, which looks healthy &mdash; but they are all in a native socket read waiting for the slow payment partner.</li>
+                <li>RUNNABLE does not mean working: a thread blocked on network I/O is reported as RUNNABLE by the JVM.</li>
+                <li>Why the response was about 3 seconds and still HTTP 200, and why a 2-second timeout setting did not stop threads waiting up to 60 seconds.</li>
+                <li>Comparison with the earlier pool exhaustion and connection leak dumps, so you can tell the three patterns apart in an interview.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="session-card sunday completed">
+          <div class="session-num sunday-num"><span class="wk-label">Week</span><span class="wk-number">17</span></div>
+          <div class="session-info">
+            <div class="session-date">Sunday, November 22, 2026</div>
+            <div class="session-module">How to Find Lock Contention using Thread Dumps &mdash; Live Demo</div>
+            <div class="session-desc">Live demo finding lock contention in thread dumps &mdash; identifying blocked threads and the lock they are waiting on.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/QPXY1IKuWPc" class="watch-link" target="_blank" rel="noopener">&#9654; How find Lock Contention using Thread Dumps - Live Demo</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Scenario 4: 70&ndash;80% of threads are BLOCKED on the same price-cache lock while CPU stays moderate &mdash; classic lock contention.</li>
+                <li>Root cause is a <code>synchronized</code> block with a slow database call (I/O) inside the lock, so every price request queues on one lock no matter which product it is for.</li>
+                <li>The lock owner changes between the three dumps, which proves it is contention, not a deadlock.</li>
+                <li>Fix by keeping I/O out of the lock and narrowing what is locked. Heap dumps come next, in December.</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="session-card">
