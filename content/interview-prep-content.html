@@ -428,10 +428,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="hero-progress">
       <div class="progress-box-header">
         <h3>Training Progress</h3>
-        <span class="percent">52% Complete</span>
+        <span class="percent">60% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:52%"></div></div>
-      <div class="progress-box-note">22 of 42 sessions conducted &bull; Weeks 1&ndash;5 (Sat) + Weeks 1&ndash;4 (Sun) + Weeks 8&ndash;10 (Sat + Sun) + Week 11 (Sun) + Week 14 (Sat + Sun) + Week 16 (Sat + Sun) + Week 17 (Sat + Sun) held</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:60%"></div></div>
+      <div class="progress-box-note">25 of 42 sessions conducted &bull; Weeks 1&ndash;5 (Sat) + Weeks 1&ndash;4 (Sun) + Weeks 8&ndash;10 (Sat + Sun) + Week 11 (Sun) + Week 12 (Sat + Sun) + Week 13 (Sat) + Week 14 (Sat + Sun) + Week 16 (Sat + Sun) + Week 17 (Sat + Sun) held</div>
     </div>
     <div class="hero-buttons">
       <a href="#register" class="btn btn-primary">Register Now</a>
@@ -449,10 +449,10 @@ footer .footer-links a:hover{color:var(--white)}
     <div class="progress-box">
       <div class="progress-box-header">
         <h3>Overall Training Progress</h3>
-        <span class="percent">52% Complete</span>
+        <span class="percent">60% Complete</span>
       </div>
-      <div class="progress-box-track"><div class="progress-box-fill" style="width:52%"></div></div>
-      <div class="progress-box-note">22 of 42 sessions conducted so far &mdash; Weeks 1&ndash;5 (Sat), Weeks 1&ndash;4 (Sun), Weeks 8&ndash;10 (Sat + Sun), Week 11 (Sun), Week 14 (Sat + Sun), Week 16 (Sat + Sun) &amp; Week 17 (Sat + Sun) &mdash; recordings linked below.</div>
+      <div class="progress-box-track"><div class="progress-box-fill" style="width:60%"></div></div>
+      <div class="progress-box-note">25 of 42 sessions conducted so far &mdash; Weeks 1&ndash;5 (Sat), Weeks 1&ndash;4 (Sun), Weeks 8&ndash;10 (Sat + Sun), Week 11 (Sun), Week 12 (Sat + Sun), Week 13 (Sat), Week 14 (Sat + Sun), Week 16 (Sat + Sun) &amp; Week 17 (Sat + Sun) &mdash; recordings linked below.</div>
     </div>
 
     <!-- Month 1: August -->
@@ -793,20 +793,67 @@ footer .footer-links a:hover{color:var(--white)}
             </div>
           </div>
         </div>
-        <div class="session-card">
+        <div class="session-card completed">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">12</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, October 17, 2026</div>
-            <div class="session-module">AppDynamics &amp; New Relic &mdash; Comparing APM Tools in Interviews</div>
-            <div class="session-desc">Dashboards, alerting, and correlating APM data with test results &mdash; how to answer "which APM tool have you used and why" with a confident, specific example.</div>
+            <div class="session-module">Jenkins Basic to Advanced &mdash; Controller &amp; Agent Setup</div>
+            <div class="session-desc">Setting up Jenkins the way real teams do: a controller that only manages, and agent machines that run the JMeter tests.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/rBKtz29VlSw" class="watch-link" target="_blank" rel="noopener">&#9654; Jenkins Basic To Advanced: Everything You Need to Know</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Recap of the freestyle project, then configuring the tools each node needs: <code>JAVA_HOME</code> pointing at the JDK folder (not <code>bin</code>) and <code>JMETER_HOME</code>.</li>
+                <li>Controller vs agent: the controller only manages and should have zero executors &mdash; the agent is the worker that runs the load test, so test load never skews Jenkins itself.</li>
+                <li>Connecting a Windows machine as an agent by running the agent command on it, and how executors let one agent run several jobs at once for testers, developers and ops.</li>
+                <li>Passing values into the JMeter script with <code>__P</code> properties (e.g. host) and keeping scripts in the same GitHub repo developers use &mdash; no working in silos.</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="session-card">
+        <div class="session-card sunday completed">
+          <div class="session-num sunday-num"><span class="wk-label">Week</span><span class="wk-number">12</span></div>
+          <div class="session-info">
+            <div class="session-date">Sunday, October 18, 2026</div>
+            <div class="session-module">Industry-Level Performance Testing without Expensive Tools &mdash; JMeter + Jenkins Capstone</div>
+            <div class="session-desc">Capstone project tying JMeter, Jenkins and GitHub together on Windows into one industry-standard, end-to-end performance test pipeline.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/Q12FhxtqCMA" class="watch-link" target="_blank" rel="noopener">&#9654; Get Industry-Level Performance Testing Without Expensive Tools!</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>End-to-end capstone: a Jenkins pipeline that pulls the project from GitHub and runs it on the Windows agent through a <code>run_jmeter.bat</code> wrapper.</li>
+                <li>Environment property files (e.g. <code>env.lab.properties</code>) hold protocol, host and port, so the same script runs against local, lab or stage just by choosing the target environment.</li>
+                <li>Users and loop counts passed in as parameters, plus exit codes that tell you what failed &mdash; exit 2 means a configuration problem to fix, not an application issue.</li>
+                <li>Results are archived to the controller, not left in the agent workspace, so every build page keeps its JTL and HTML report; build parameters (choices, booleans) make runs repeatable.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="session-card completed">
           <div class="session-num"><span class="wk-label">Week</span><span class="wk-number">13</span></div>
           <div class="session-info">
             <div class="session-date">Saturday, October 24, 2026</div>
-            <div class="session-module">JVM Internals &amp; Garbage Collection Tuning</div>
-            <div class="session-desc">Heap vs stack, memory regions, GC algorithms (G1, CMS, ZGC) &mdash; explaining GC tuning decisions the way a panel expects from a performance engineer.</div>
+            <div class="session-module">Jenkins Pipelines Finally Make Sense &mdash; Final Jenkins Session</div>
+            <div class="session-desc">Final Jenkins session: turning the earlier batch-job setup into a proper pipeline with pre-flight checks, housekeeping and secure configuration.</div>
+            <span class="session-tag training">Training</span>
+            <span class="session-tag completed-tag">&#10003; Conducted</span>
+            <br>
+            <a href="https://youtu.be/0GPD-yBkUfE" class="watch-link" target="_blank" rel="noopener">&#9654; Jenkins Pipelines Finally Make Sense (Final Session)</a>
+            <div class="session-summary">
+              <strong>Session takeaways:</strong>
+              <ul>
+                <li>Recap from the first batch-style job and agent setup to a full pipeline built step by step from the GitHub repo.</li>
+                <li>Housekeeping: log rotation that keeps only the last 30 builds, so old builds don&rsquo;t fill the disk mid-test.</li>
+                <li>Pre-flight checks before every run &mdash; JMeter 5.6.3 on the agent, Java home, target host and port, free disk space &mdash; so a run fails fast for the right reason.</li>
+                <li>Jenkins system settings: system message, GitHub server connections, and authentication vs authorization &mdash; critical because Jenkins runs commands on other machines. Plugin errors (<code>com.thoughtworks&hellip;</code>) mean a missing plugin. Monitoring with ELK, Datadog and Dynatrace comes next.</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="session-card completed">
