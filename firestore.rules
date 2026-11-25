@@ -36,7 +36,11 @@ service cloud.firestore {
           "madhuavish01@gmail.com",
           "supujoy@gmail.com",
           "windimple30@gmail.com",
-          "mdnadeem1211@gmail.com"
+          "mdnadeem1211@gmail.com",
+          "dheepikar8@gmail.com",
+          "bhikshapthi.pokala84@gmail.com",
+          "bhikshapthi.pt@gmail.com",
+          "bikshapathi.pokala26@gmail.com"
         ];
       allow write: if false; // only the Admin SDK (upload script) can write
     }
